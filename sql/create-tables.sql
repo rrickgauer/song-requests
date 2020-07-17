@@ -18,7 +18,7 @@ CREATE TABLE Setlists (
     time_start DATETIME NOT NULL,
     time_end DATETIME NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (dj_id) REFERENCES Djs(id)
+    FOREIGN KEY (dj_id) REFERENCES Djs(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 CREATE TABLE Requests (
@@ -30,5 +30,5 @@ CREATE TABLE Requests (
     votes_up INT UNSIGNED NOT NULL DEFAULT 0,
     votes_down INT UNSIGNED NOT NULL DEFAULT 0,
     PRIMARY KEY (id),
-    FOREIGN KEY (setlist_id) REFERENCES Setlists(id)
+    FOREIGN KEY (setlist_id) REFERENCES Setlists(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
