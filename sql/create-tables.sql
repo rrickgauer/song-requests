@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS
-    Djs,
+    Requests,
     Setlists,
-    Requests;
+    Djs
 
 CREATE TABLE Djs (
     id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT,
     username CHAR(20) NOT NULL UNIQUE,
-    password CHAR(20) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB;
 
