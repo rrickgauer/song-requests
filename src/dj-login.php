@@ -1,4 +1,14 @@
-<?php include('functions.php'); ?>
+<?php 
+
+include('functions.php'); 
+
+// user attempted to create an account
+if (isset($_POST['new-username'], $_POST['new-password'])) {
+  $sqlResult = insertDj($_POST['new-username'], $_POST['new-password']);
+
+}
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +44,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
           </div>
-          <input type="password" class="form-control" id="new-username" name="new-username" required>
+          <input type="password" class="form-control" id="new-password" name="new-password" required>
         </div>
       </div>
 

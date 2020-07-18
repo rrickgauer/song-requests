@@ -16,6 +16,24 @@ function dbConnect() {
   }
 }
 
+function insertDj($username, $password) {
+
+  $pdo = dbConnect();
+  $sql = $pdo->prepare('INSERT INTO Djs (username, password) VALUES (:username, :password)');
+
+  // sanitize and bind username
+  $username = filter_var($username, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':username', $username, PDO::PARAM_STR);
+
+  // sanitize, hash, and bind password
+  $password = filter_var($password, FILTER_SANITIZE_STRING);
+  $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+  $sql->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+
+  $sql->execute();
+
+  return $sql;
+}
 
 
 
