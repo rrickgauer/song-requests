@@ -89,6 +89,73 @@ function getDjInfo($id) {
   return $sql;
 }
 
+// insert a new setlist into the db
+function insertSetlist($djId, $name, $status, $timeStart, $timeEnd) {
+  $stmt = "";
+  $stmt .= "INSERT INTO Setlists ";
+  $stmt .= "            (dj_id, ";
+  $stmt .= "             name, ";
+  $stmt .= "             status, ";
+  $stmt .= "             time_start, ";
+  $stmt .= "             time_end) ";
+  $stmt .= "VALUES      (:djId, ";
+  $stmt .= "             :name, ";
+  $stmt .= "             :status, ";
+  $stmt .= "             :timeStart, ";
+  $stmt .= "             :timeEnd)" ;
+
+  $sql = dbConnect()->prepare($stmt);
+  // $sql = $pdo->prepare($stmt);
+
+  // filter and bind dj_id
+  $djId = filter_var($djId, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':djId', $djId, PDO::PARAM_INT);
+
+  // name
+  $name = filter_var($name, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':name', $name, PDO::PARAM_STR);
+
+  // status
+  $status = filter_var($status, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':status', $status, PDO::PARAM_STR);
+
+  // time start
+  $timeStart = filter_var($timeStart, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':timeStart', $timeStart, PDO::PARAM_STR);
+
+  // time end
+  $timeEnd = filter_var($timeEnd, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':timeEnd', $timeEnd, PDO::PARAM_STR);
+
+  // execute statement
+  $sql->execute();
+  return $sql;
+}
+
+
+// return the dj's most recently created setlist id
+function getRecentSetlistId($djId) {
+  // create sql statement
+  $stmt ='
+    SELECT id 
+    FROM   Setlists 
+    WHERE  dj_id = :djId 
+    ORDER  BY id DESC 
+    LIMIT  1';
+
+  // connect to database
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind dj_id
+  $djId = filter_var($djId, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':djId', $djId, PDO::PARAM_INT);
+
+  // execute and return sql statement
+  $sql->execute();
+  return $sql;
+}
+
+
 
 
 ?>

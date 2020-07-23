@@ -3,6 +3,25 @@ session_start();
 include('functions.php');
 $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 
+// creat new setlist
+if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['new-setlist-time-end'], $_POST['new-setlist-status'])) {
+  $result = insertSetlist(
+    $_SESSION['id'],
+    $_POST['new-setlist-name'],
+    $_POST['new-setlist-status'],
+    $_POST['new-setlist-time-start'], 
+    $_POST['new-setlist-time-end']
+  ); 
+
+  // go to the setlist page if successful insert
+  if ($result->rowCount() == 1) {
+    $setlistID = getRecentSetlistId($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
+    $url = 'setlist.php?id=' . $setlistID['id'];
+    header('Location: ' . $url);
+    exit;
+  }
+}
+
 ?>
 
 
