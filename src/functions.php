@@ -211,6 +211,37 @@ function getSetlistData($id) {
 }
 
 
+function getDjSetlists($djId) {
+  // create sql query
+  $stmt = '
+  SELECT Setlists.id,
+         Setlists.dj_id,
+         Setlists.name,
+         Setlists.status,
+         Setlists.time_start,
+         Setlists.time_end,
+         DATE_FORMAT(Setlists.time_start, "%c/%d/%Y") AS time_start_display_date,
+         DATE_FORMAT(Setlists.time_start, "%l:%i %p") AS time_start_display_time,
+         DATE_FORMAT(Setlists.time_end, "%c/%d/%Y")   AS time_end_display_date,
+         DATE_FORMAT(Setlists.time_end, "%l:%i %p")   AS time_end_display_time
+  FROM   Setlists
+  WHERE  Setlists.dj_id = :djId
+  GROUP  BY Setlists.id
+  ORDER  BY Setlists.time_start DESC';
+
+  // connect to database
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind id
+  $djId = filter_var($djId, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':djId', $djId, PDO::PARAM_INT);
+
+  // return result
+  $sql->execute();
+  return $sql;
+}
+
+
 
 
 ?>

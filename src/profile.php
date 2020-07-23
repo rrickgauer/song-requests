@@ -43,14 +43,16 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
     <div class="row">
       
       <!-- setlists -->
-      <div class="col-sm-12 col-md-8">
-
+      <div class="col-sm-12 col-md-9 setlists">
         <h5>Your setlists</h5>
+        
+        <!-- selist cards list -->
+        <div id="setlists-list"></div>
 
       </div>
       
       <!-- create new setlist -->
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12 col-md-3">
         <h5>New setlist</h5>
         <form method="post">
           <!-- setlist name -->
