@@ -210,7 +210,7 @@ function getSetlistData($id) {
   return $sql;
 }
 
-
+// return all setlists owned by a dj
 function getDjSetlists($djId) {
   // create sql query
   $stmt = '

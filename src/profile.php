@@ -49,7 +49,21 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
 
       <!-- setlists -->
       <div class="col-sm-12 col-md-9 setlists">
-        <h5>Your setlists</h5>
+        
+        <div class="split">
+          <div class="left">
+            <h5>Your setlists</h5>
+          </div>
+          <div class="right">
+            <span class="mr-3 font-weight-bold">Sort:&nbsp</span>
+            <select class="form-control" id="sort-setlists-select">
+              <option value="time-start">Start time</option>
+              <option value="name">Alphabetical</option>
+            </select>
+          </div>
+        </div>
+
+        
         <!-- selist cards list -->
         <div id="setlists-list"></div>
 
