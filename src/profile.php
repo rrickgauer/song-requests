@@ -10,6 +10,9 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 <html>
 <head>
   <?php include('header.php'); ?>
+  <!-- flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <title>DJ Profile Page</title>
 </head>
 <body>
@@ -39,7 +42,7 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
           <div class="input-group-prepend">
             <span class="input-group-text"><i class='bx bx-calendar-plus'></i></span>
           </div>
-          <input type="text" class="form-control new-setlist new-setlist-time-start" id="new-setlist-time-start" name="new-setlist-time-start" required>
+          <input type="text" class="form-control new-setlist new-setlist-time new-setlist-time-start" id="new-setlist-time-start" name="new-setlist-time-start" required>
         </div>
       </div>
 
@@ -51,7 +54,7 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
           <div class="input-group-prepend">
             <span class="input-group-text"><i class='bx bx-calendar-x'></i></span>
           </div>
-          <input type="text" class="form-control new-setlist new-setlist-time-end" id="new-setlist-time-end" name="new-setlist-time-end" required>
+          <input type="text" class="form-control new-setlist new-setlist-time new-setlist-time-end" id="new-setlist-time-end" name="new-setlist-time-end" required>
         </div>
       </div>
 
@@ -78,6 +81,7 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 
 
   <?php include('footer.php'); ?>
+  <script src="js/profile-js.js"></script>
 
 </body>
 </html>
