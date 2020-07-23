@@ -1,5 +1,10 @@
 <?php
 
+// constants
+define("SQL_FORMAT_DATE", "%c/%d/%Y");
+define("SQL_FORMAT_TIME", "%l:%i %p");
+
+
 // return a pdo database object
 function dbConnect() {
   include('db-info.php');
@@ -151,6 +156,56 @@ function getRecentSetlistId($djId) {
   $sql->bindParam(':djId', $djId, PDO::PARAM_INT);
 
   // execute and return sql statement
+  $sql->execute();
+  return $sql;
+}
+
+/**
+ * Returns all data about a setlist:
+ * 
+ * dj_id
+ * name
+ * status
+ * time_start
+ * time_end
+ * time_start_display_date
+ * time_start_display_time
+ * time_end_display_date
+ * time_end_display_time
+ * Djs.username
+ * 
+ * @param int $id 
+ * @return array
+ */
+function getSetlistData($id) {
+  // create sql query
+  $stmt = '
+  SELECT Setlists.id,
+         Setlists.dj_id,
+         Setlists.name,
+         Setlists.status,
+         Setlists.time_start,
+         Setlists.time_end,
+         DATE_FORMAT(Setlists.time_start, "%c/%d/%Y") AS time_start_display_date,
+         DATE_FORMAT(Setlists.time_start, "%l:%i %p") AS time_start_display_time,
+         DATE_FORMAT(Setlists.time_end, "%c/%d/%Y")   AS time_end_display_date,
+         DATE_FORMAT(Setlists.time_end, "%l:%i %p")   AS time_end_display_time,
+         Djs.username
+  FROM   Setlists
+         LEFT JOIN Djs
+                ON Setlists.dj_id = Djs.id
+  WHERE  Setlists.id = :id
+  GROUP  BY Setlists.id
+  LIMIT  1';
+
+  // connect to database
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind id
+  $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':id', $id, PDO::PARAM_INT);
+
+  // return result
   $sql->execute();
   return $sql;
 }
