@@ -2,4 +2,14 @@
   margin-top: 15px;
 }
 
+.split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.split .right {
+  display: flex;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,14 @@
 .card-setlist {
   margin-top: 15px;
 }
+
+.split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+}
