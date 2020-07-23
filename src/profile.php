@@ -35,11 +35,10 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
   <title>DJ Profile Page</title>
 </head>
 <body>
+  <?php include('navbar.php'); ?>
   <div class="container">
-
     <h1><?php echo $djInfo['username']; ?></h1>
 
-    
     <!-- create new setlist -->
     <form method="post">
       
