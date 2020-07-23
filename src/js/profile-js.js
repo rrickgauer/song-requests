@@ -1,9 +1,17 @@
 const API = 'api.song-requests.php';
 
+var newSetlistModal = $("#modal-new-setlist");
+
 $(document).ready(function() {
+  addEventListeners();
   enableFlatpickr();
   getSetlists();
+
 });
+
+function addEventListeners() {
+  $(newSetlistModal).on('hidden.bs.modal', clearNewSetlistInputs);
+}
 
 
 // enable the flatpickr
@@ -74,6 +82,10 @@ function getSetlistCardHtml(setlist) {
   return html;
 }
 
+// clear the text from the new setlist modal inputs
+function clearNewSetlistInputs() {
+  $("input.new-setlist").val('');
+}
 
 
 
