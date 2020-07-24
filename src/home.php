@@ -29,14 +29,41 @@
     <p class="text-center mt-3">Want to make your own setlist? <a href="login.php">Sign up</a></p>
     
     <!-- search results -->
-    <div class="search-results">
+    <div id="home-search-results">
+
+      <h4 class="mb-3">DJ's</h4>
       
       <!-- djs -->
-      <div class="search-results-djs"></div>
-      
+      <div class="search-results-djs">
+        
+<!--         <div class="card card-dj">
+          <div class="card-body">
+            <h5 class="card-title">rrickgauer</h5>
+          </div>
+          <div class="card-footer">
+            <a class="float-right" href="#">View</a>
+          </div>
+        </div> -->
 
+
+      </div>
+      
+      <h4 class="mb-3 mt-5">Setlists</h4>
       <!-- setlists -->
-      <div class="search-results-setlists"></div>
+      <div class="search-results-setlists">
+        
+<!--         <div class="card card-setlist">
+          <div class="card-body">
+            <h5 class="card-title">Graduation</h5>
+          </div>
+          <div class="card-footer">
+            <a class="float-right" href="#">View</a>
+          </div>
+        </div> -->
+
+
+       
+      </div>
 
       
     </div>

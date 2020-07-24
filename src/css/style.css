@@ -12,4 +12,9 @@
   align-items: center;
 }
 
+#home-search-results .card-setlist,
+#home-search-results .card-dj {
+  margin-top: 5px;
+}
+
 /*# sourceMappingURL=style.css.map */
