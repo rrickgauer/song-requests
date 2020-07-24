@@ -12,3 +12,9 @@ The DJ can then setup a setlist for users to submit a song request. A setlist ha
 Once the setlist is created, its status is set to open. This means that users are able to submit song requests to be added to the setlist.
 
 When a user wants to add a song to the setlist, they can search for the setlist by setlist name, dj username, or enter in the setlist id. Once they are in the setlist page, they can submit a song request by entering in artist name, and/or song title. After submitting the song request, the system autogenerates and assigns a unique id for the request, saves the time it was submitted, and sets the inital status to pending. Also, the user can see what other songs are on the setlist that have been requested by other users. The page orders the songs by oldest to newest, and shows their status (pending, approved, denied).
+
+
+## Ideas
+
+* [Home search bar look](https://uidesigndaily.com/posts/sketch-search-searchbar-find-day-1026)
+* [home search results](https://uidesigndaily.com/posts/figma-search-results-find-project-management-day-492)
