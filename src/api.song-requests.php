@@ -9,7 +9,12 @@ if (isset($_GET['function'], $_SESSION['id']) && $_GET['function'] == 'get-dj-se
   exit;
 }
 
+// return the results from a search query for setlists and djs
+else if (isset($_GET['function'], $_GET['query']) && $_GET['function'] == 'search-djs-setlists') {
+  $query = $_GET['query'];
 
+  
+}
 
 
 

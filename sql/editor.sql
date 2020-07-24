@@ -10,6 +10,7 @@ UNION
         null,
         null,
         null)
+union
 (SELECT Setlists.id,
         Djs.username,
         Setlists.name,
@@ -20,3 +21,24 @@ UNION
  GROUP  BY Setlists.id
  ORDER  BY Setlists.time_end
  LIMIT  5) 
+
+
+(select Djs.id as id, Djs.username, null as name, null as status
+from Djs 
+order by Djs.username asc
+limit 10)
+
+union 
+
+(select null, null, null, null)
+
+union 
+
+(select Setlists.id, Djs.username, Setlists.name, Setlists.status
+from Setlists
+left join Djs on Setlists.dj_id = Djs.id 
+group by Setlists.id 
+order by Setlists.name asc
+limit 10)
+
+

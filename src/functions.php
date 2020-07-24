@@ -242,6 +242,43 @@ function getDjSetlists($djId) {
 }
 
 
+// return at most 5 djs and setlists for a query search
+function searchForDjsAndSetlists($query) {
+
+  // sql statement
+
+  $stmt = '
+  (SELECT Djs.id AS id,
+          Djs.username,
+          NULL   AS name,
+          NULL   AS status
+   FROM   Djs
+   ORDER  BY Djs.username ASC
+   LIMIT  10)
+  UNION
+  (SELECT NULL,
+          NULL,
+          NULL,
+          NULL)
+  UNION
+  (SELECT Setlists.id,
+          Djs.username,
+          Setlists.name,
+          Setlists.status
+   FROM   Setlists
+          LEFT JOIN Djs
+                 ON Setlists.dj_id = Djs.id
+   GROUP  BY Setlists.id
+   ORDER  BY Setlists.name ASC
+   LIMIT  10)';
+
+
+
+}
+
+
+
+
 
 
 ?>

@@ -24,7 +24,7 @@
     </div>
     
     <!-- search bar input -->
-    <input type="text" class="form-control form-control-lg" placeholder="Type here to search">
+    <input type="text" id="home-search-input" class="form-control form-control-lg" placeholder="Type here to search">
 
     <p class="text-center mt-3">Want to make your own setlist? <a href="login.php">Sign up</a></p>
     
