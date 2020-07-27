@@ -30,17 +30,12 @@
     
     <!-- search results -->
     <div id="home-search-results">
-
-      <h4 class="mb-3">DJ's</h4>      
-      <div class="search-results-djs">
-        <!-- dj search result cards go here -->
-      </div>
+      
+      <!-- dj search result cards go here -->
+      <div class="search-results-djs"></div>
     
-
-      <h4 class="mb-3 mt-5">Setlists</h4>
-      <div class="search-results-setlists">
-        <!-- setlists cards go here-->
-      </div>
+      <!-- setlists cards go here-->
+      <div class="search-results-setlists"></div>
 
       
     </div>

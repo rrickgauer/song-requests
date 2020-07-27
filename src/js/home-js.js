@@ -35,7 +35,7 @@ function displaySearchResults(data) {
 // generates and returns the html for the dj cards
 function getDjCardsHtml(djs) {
   const size = djs.length;
-  var html = '';
+  var html = '<h4 class="mb-3">DJ\'s</h4>';
 
   for (var count = 0; count < size; count++) {
     html += '<div class="card card-dj">';
@@ -54,7 +54,7 @@ function getDjCardsHtml(djs) {
 // generates and returns html for all the setlist cards
 function getSetlistCardsHtml(setlists) {
   const size = setlists.length;
-  var html = '';
+  var html = '<h4 class="mb-3 mt-5">Setlists</h4>';
 
   for (var count = 0; count < size; count++) {
     html += '<div class="card card-setlist">';
