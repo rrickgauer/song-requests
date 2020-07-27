@@ -31,52 +31,19 @@
     <!-- search results -->
     <div id="home-search-results">
 
-      <h4 class="mb-3">DJ's</h4>
-      
-      <!-- djs -->
+      <h4 class="mb-3">DJ's</h4>      
       <div class="search-results-djs">
-        
-<!--         <div class="card card-dj">
-          <div class="card-body">
-            <h5 class="card-title">rrickgauer</h5>
-          </div>
-          <div class="card-footer">
-            <a class="float-right" href="#">View</a>
-          </div>
-        </div> -->
-
-
+        <!-- dj search result cards go here -->
       </div>
-      
+    
+
       <h4 class="mb-3 mt-5">Setlists</h4>
-      <!-- setlists -->
       <div class="search-results-setlists">
-        
-<!--         <div class="card card-setlist">
-          <div class="card-body">
-            <h5 class="card-title">Graduation</h5>
-          </div>
-          <div class="card-footer">
-            <a class="float-right" href="#">View</a>
-          </div>
-        </div> -->
-
-
-       
+        <!-- setlists cards go here-->
       </div>
 
       
     </div>
-
-
-
-
-
-
-
-
-
-
     
   </div>
 

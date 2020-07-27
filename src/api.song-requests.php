@@ -13,6 +13,12 @@ if (isset($_GET['function'], $_SESSION['id']) && $_GET['function'] == 'get-dj-se
 else if (isset($_GET['function'], $_GET['query']) && $_GET['function'] == 'search-djs-setlists') {
   $query = $_GET['query'];
 
+  $data = [];
+  $data['djs'] = getDjsFromSearch($query)->fetchAll(PDO::FETCH_ASSOC);
+  $data['setlists'] = getSetlistsFromSearch($query)->fetchAll(PDO::FETCH_ASSOC);
+  echo json_encode($data);
+  exit;
+
   
 }
 

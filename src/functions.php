@@ -242,41 +242,75 @@ function getDjSetlists($djId) {
 }
 
 
-// return at most 5 djs and setlists for a query search
-function searchForDjsAndSetlists($query) {
-
+/****************************************************
+ * returns search results for the djs
+ * 
+ * id
+ * username
+*****************************************************/
+function getDjsFromSearch($query) {
   // sql statement
-
   $stmt = '
-  (SELECT Djs.id AS id,
-          Djs.username,
-          NULL   AS name,
-          NULL   AS status
-   FROM   Djs
-   ORDER  BY Djs.username ASC
-   LIMIT  10)
-  UNION
-  (SELECT NULL,
-          NULL,
-          NULL,
-          NULL)
-  UNION
-  (SELECT Setlists.id,
-          Djs.username,
-          Setlists.name,
-          Setlists.status
-   FROM   Setlists
-          LEFT JOIN Djs
-                 ON Setlists.dj_id = Djs.id
-   GROUP  BY Setlists.id
-   ORDER  BY Setlists.name ASC
-   LIMIT  10)';
+  SELECT id,
+         username
+  FROM   Djs
+  WHERE  username LIKE :username
+  ORDER  BY username ASC
+  LIMIT  5';
 
+  $sql = dbConnect()->prepare($stmt);
 
+  // filter and bind the username query
+  $username = "%$query%";
+  $username = filter_var($username, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':username', $username, PDO::PARAM_STR);
 
+  // return result
+  $sql->execute();
+  return $sql;
 }
 
 
+/*****************************************************
+ * returns the setlist search results from db
+ * 
+ * id
+ * dj_id
+ * name
+ * status
+ * time_start
+ * time_end
+ * username
+*****************************************************/
+function getSetlistsFromSearch($query) {
+  // sql statement
+  $stmt = '
+  SELECT Setlists.id,
+         Setlists.dj_id,
+         Setlists.name,
+         Setlists.status,
+         Setlists.time_start,
+         Setlists.time_end,
+         Djs.username
+  FROM   Setlists
+         LEFT JOIN Djs
+                ON Setlists.dj_id = Djs.id
+  WHERE  Setlists.name LIKE :name
+  GROUP  BY Setlists.id
+  ORDER  BY Setlists.name ASC
+  LIMIT  5';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind the setlist name query
+  $name = "%$query%";
+  $name = filter_var($name, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':name', $name, PDO::PARAM_STR);
+
+  // return result
+  $sql->execute();
+  return $sql;
+}
 
 
 
