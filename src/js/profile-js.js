@@ -74,7 +74,7 @@ function getSetlistCardHtml(setlist) {
     html += '<span class="badge badge-warning">' + setlist.status + '</span>';
 
   // link to setlist page
-  html += '<a href="setlist.php?id=' + setlist.id + '" class="float-right">Details</a>';
+  html += '<a href="dj-setlist.php?id=' + setlist.id + '" class="float-right">Details</a>';
 
   html += '</div>';
   html += '</div> ';
