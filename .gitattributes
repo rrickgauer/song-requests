@@ -1,4 +1,1 @@
-sql/ linguist-detectable=false
-src/header.php linguist-language=php
-src/footer.php linguist-language=php
-src/navbar.php linguist-language=php
+sql/* linguist-language=sql
