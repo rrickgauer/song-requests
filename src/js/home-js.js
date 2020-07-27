@@ -1,6 +1,13 @@
-const API = 'api.song-requests.php';
-const searchInput = $("#home-search-input");
+/****************
+Constants
+*****************/
+const API = 'api.song-requests.php';            // back end server api string
+const searchInput = $("#home-search-input");    // search input text box
 
+
+/******************
+Functions
+*******************/
 
 // main function
 $(document).ready(function() {
@@ -10,6 +17,9 @@ $(document).ready(function() {
 
 function addEventListeners() {
   $(searchInput).on('keyup', getSearchResults);
+  $('input[name="filter-option"]').on('change', function() {
+    updateSelectedFilterOption(this);
+  });
 }
 
 // get the search results from the server
@@ -70,4 +80,23 @@ function getSetlistCardsHtml(setlists) {
   return html;
 }
 
+// filters out the search result cards
+function updateSelectedFilterOption(selectedOption) {
+  var newSelectedFilterOption = $(selectedOption).val();
+
+  switch(newSelectedFilterOption) {
+    case "dj":
+      $(".search-results-djs").attr('hidden', false);
+      $(".search-results-setlists").attr('hidden', true);
+      break;
+    case "setlist":
+      $(".search-results-djs").attr('hidden', true);
+      $(".search-results-setlists").attr('hidden', false);
+      break;
+    default:
+      $(".search-results-djs").attr('hidden', false);
+      $(".search-results-setlists").attr('hidden', false);
+      break;
+  }
+}
 
