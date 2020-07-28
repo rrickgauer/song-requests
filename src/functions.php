@@ -322,6 +322,7 @@ function getSetlistsFromSearch($query) {
  * votes_up
  * votes_down
  * date_submitted
+ * votes_count
  */
 function getRequests($id) {
   $stmt = '
