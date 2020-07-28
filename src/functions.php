@@ -312,6 +312,41 @@ function getSetlistsFromSearch($query) {
   return $sql;
 }
 
+/**
+ * returns the song requests of a setlist
+ * 
+ * id
+ * song_artist
+ * song_title
+ * status
+ * votes_up
+ * votes_down
+ * date_submitted
+ */
+function getRequests($id) {
+  $stmt = '
+  SELECT Requests.id,
+         Requests.song_artist,
+         Requests.song_title,
+         Requests.status,
+         Requests.votes_up                                     AS votes_up,
+         Requests.votes_down                                   AS votes_down,
+         Requests.date_submitted,
+         CAST(votes_up AS signed) - CAST(votes_down AS signed) AS votes_count
+  FROM   Requests
+  WHERE  Requests.setlist_id = :id
+  ORDER  BY Requests.date_submitted ASC';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind id
+  $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':id', $id, PDO::PARAM_INT);
+
+  $sql->execute();
+  return $sql;
+}
+
 
 
 

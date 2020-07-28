@@ -13,7 +13,6 @@ if (isset($_GET['function'], $_SESSION['id']) && $_GET['function'] == 'get-dj-se
 else if (isset($_GET['function'], $_GET['id']) && $_GET['function'] == 'get-dj-setlists-for-user') {
   $setlists = getDjSetlists($_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($setlists);
-  // echo $_SESSION['id'];
   exit;
 }
 
@@ -29,7 +28,13 @@ else if (isset($_GET['function'], $_GET['query']) && $_GET['function'] == 'searc
 }
 
 
+// get a setlist's song requests
+else if (isset($_GET['function'], $_GET['id']) && $_GET['function'] == 'get-setlist-requests') {
+  $requests = getRequests($_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
+  echo json_encode($requests);
+  exit;
 
+}
 
 
 

@@ -14,10 +14,14 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
     <h1 class="text-center mt-5"><?php echo $setlistInfo['name']; ?></h1>
     <p class="text-center"><?php echo $setlistInfo['username']; ?></p>
 
+    <!-- song request cards -->
+    <h5>Requests</h5>
+    <div class="song-requests"></div>
+
   </div>
 
 
 <?php include('footer.php'); ?>
-
+<script src="js/setlist-js.js"></script>
 </body>
 </html>

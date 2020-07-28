@@ -19,3 +19,33 @@
     margin-top: 5px;
   }
 }
+
+.card-request {
+  .card-body {
+    display: flex;
+
+    .votes {
+      margin-right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      align-content: stretch;
+    }
+
+    .request-info {
+      .request-info-song-title {
+        font-size: 1.5em;
+      }
+
+      .status {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+
+body {
+  margin-bottom: 30px;
+}
