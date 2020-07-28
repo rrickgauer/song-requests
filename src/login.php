@@ -109,8 +109,7 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
       </div>
     </div>
 
-
-
+    <p class="text-center mt-4">Want to submit a song request? <a href="home.php">Search here</a></p>
 
   </div>
 
