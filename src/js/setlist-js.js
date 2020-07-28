@@ -63,7 +63,14 @@ function getRequestCardHtml(request) {
   html += '<div class="request-info-song-title">' + request.song_title + '</div>';
   html += '<div class="request-info-song-artist"><i class="bx bxs-user"></i>&nbsp;' + request.song_artist + '</div>';
   html += '<div class="status">';
-  html += '<span class="badge badge-primary">' + request.status + '</span>';
+
+  if (request.status == 'approved')
+    html += '<span class="badge badge-success">' + request.status + '</span>';
+  else if (request.status == 'denied')
+    html += '<span class="badge badge-danger">' + request.status + '</span>';
+  else
+    html += '<span class="badge badge-secondary">' + request.status + '</span>';
+
   html += '</div>';
   html += '</div>';
   html += '</div> ';
