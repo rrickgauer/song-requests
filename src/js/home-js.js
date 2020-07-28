@@ -53,7 +53,7 @@ function getDjCardsHtml(djs) {
     html += '<h5 class="card-title">' + djs[count].username + '</h5>';
     html += '</div>';
     html += '<div class="card-footer">';
-    html += '<a class="float-right" href="#">View</a>';
+    html += '<a class="float-right" href="dj.php?id=' + djs[count].id + '">View</a>';
     html += '</div>';
     html += '</div>';
   }
