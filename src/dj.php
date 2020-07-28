@@ -17,10 +17,9 @@ $djInfo = getDjInfo($_GET['id'])->fetch(PDO::FETCH_ASSOC);
     <h1 class="text-center mt-5"><?php echo $djInfo['username']; ?></h1>
 
     <h5>Setlists</h5>
-    <div class="dj-setlists">
 
-      
-    </div>
+    <!-- dj setlist cards go here -->
+    <div class="dj-setlists"></div>
     
   </div>
 
