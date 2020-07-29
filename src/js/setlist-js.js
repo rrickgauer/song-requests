@@ -17,6 +17,14 @@ $(document).ready(function() {
 // add event listeners
 function addEventListeners() {
   $("#modal-new-request").on('hidden.bs.modal', clearNewRequestModalInputs);
+
+  $(".song-requests").on('click', '.vote-up', function() {
+    voteUp(this);
+  });
+
+  $(".song-requests").on('click', '.vote-down', function() {
+    voteDown(this);
+  });
 }
 
 
@@ -29,6 +37,7 @@ function getRequests() {
 
   $.get(API, data, function(response) {
     displayRequests(JSON.parse(response));
+    console.log(JSON.parse(response));
   });
 }
 
@@ -51,13 +60,13 @@ function getRequestCardHtml(request) {
   html += '<div class="card-body">';
   html += '<div class="votes">';
   html += '<div class="votes-up">';
-  html += '<i class="bx bx-up-arrow vote-up"></i>';
+  html += '<i class="bx bxs-up-arrow vote-up"></i>';
   html += '</div>';
   html += '<div class="votes-count">';
-  html += '<span class="votes-count-display>' + request.votes_count + '</span>';
+  html += '<span class="votes-count-display">' + request.votes + '</span>';
   html += '</div>';
   html += '<div class="votes-down">';
-  html += '<i class="bx bx-down-arrow vote-down"></i>';
+  html += '<i class="bx bxs-down-arrow vote-down"></i>';
   html += '</div>';
   html += '</div>';
   html += '<div class="request-info">';
@@ -83,4 +92,112 @@ function getRequestCardHtml(request) {
 // clears the new request modal form inputs
 function clearNewRequestModalInputs() {
   $("#modal-new-request input").val('');
+}
+
+// vote up button was clicked
+function voteUp(selector) {
+  if ($(selector).hasClass('voted')) 
+    removeVoteUp(selector);
+  else 
+    postVoteUp(selector);
+}
+
+// adds 1 to the vote count
+function postVoteUp(selector) {
+  var request = $(selector).closest(".card-request");
+  var requestID = $(request).attr('data-request-id');
+
+  var data = {
+    function: 'vote-up',
+    requestID: requestID,
+  };
+
+  $.post(API, data, function(response) {
+    if (response == 'success') {
+      if ($(request).find('.vote-down').hasClass('voted')) {
+        incrementVoteCount($(request).find(".votes-count-display"));
+        $(request).find('.vote-down').removeClass('voted')
+      }
+      $(selector).addClass('voted'); 
+      incrementVoteCount($(request).find(".votes-count-display"));
+    }
+  });
+}
+
+// user previously voted up on a request
+// remove that vote up and decrement the vote count
+function removeVoteUp(selector) {
+  var request = $(selector).closest(".card-request");
+  var requestID = $(request).attr('data-request-id');
+
+  var data = {
+    function: 'vote-down',
+    requestID: requestID,
+  };
+
+  $.post(API, data, function(response) {
+    $(selector).removeClass('voted');
+    decrementVoteCount($(request).find(".votes-count-display"));
+  });
+}
+
+// user has clicked the vote down button
+function voteDown(selector) {
+  if ($(selector).hasClass('voted'))
+    removeVoteDown(selector);
+  else
+    postVoteDown(selector);
+}
+
+// decrement the vote count by 1
+function postVoteDown(selector) {
+  var request = $(selector).closest(".card-request");
+  var requestID = $(request).attr('data-request-id');
+
+  var data = {
+    function: 'vote-down',
+    requestID: requestID,
+  };
+
+  $.post(API, data, function(response) {
+    if (response == 'success') {
+      if ($(request).find('.vote-up').hasClass('voted')) {
+        decrementVoteCount($(request).find(".votes-count-display"));
+        $(request).find('.vote-up').removeClass('voted')
+      }
+      
+      $(selector).addClass('voted'); 
+      decrementVoteCount($(request).find(".votes-count-display"));
+    }
+  });
+}
+
+// user has previously voted down
+// remove add 1 to the votes and remove the voted class from the button
+function removeVoteDown(selector) {
+  var request = $(selector).closest(".card-request");
+  var requestID = $(request).attr('data-request-id');
+
+  var data = {
+    function: 'vote-up',
+    requestID: requestID,
+  };
+
+  $.post(API, data, function(response) {
+    $(selector).removeClass('voted');
+    incrementVoteCount($(request).find(".votes-count-display"));
+  });
+}
+
+
+function incrementVoteCount(element) {
+  var count = parseInt($(element).html());
+  count += 1;
+  $(element).html(count);
+}
+
+function decrementVoteCount(element) {
+  var count = parseInt($(element).html());
+  count += -1;
+  $(element).html(count);
 }

@@ -330,10 +330,8 @@ function getRequests($id) {
          Requests.song_artist,
          Requests.song_title,
          Requests.status,
-         Requests.votes_up                                     AS votes_up,
-         Requests.votes_down                                   AS votes_down,
-         Requests.date_submitted,
-         CAST(votes_up AS signed) - CAST(votes_down AS signed) AS votes_count
+         Requests.votes,
+         Requests.date_submitted
   FROM   Requests
   WHERE  Requests.setlist_id = :id
   ORDER  BY Requests.date_submitted ASC';
@@ -374,7 +372,6 @@ function insertRequest($setlistID, $title, $artist = null) {
   $title = filter_var($title, FILTER_SANITIZE_STRING);
   $sql->bindParam(':title', $title, PDO::PARAM_STR);
 
-
   // filter and bind artist
   $artist = filter_var($artist, FILTER_SANITIZE_STRING);
   $sql->bindParam(':artist', $artist, PDO::PARAM_STR);
@@ -394,6 +391,42 @@ function getAlert($message) {
   </div>";
 }
 
+
+// increment a requests votes by 1
+function incrementVotesUp($requestID) {
+  // creaete sql statement
+  $stmt = '
+  UPDATE Requests
+  SET    votes = votes + 1
+  WHERE  id = :requestID';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind request id
+  $requestID = filter_var($requestID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':requestID', $requestID, PDO::PARAM_INT);
+
+  $sql->execute();
+  return $sql;
+}
+
+// decrement votes by 1
+function decrementVotesDown($requestID) {
+  // creaete sql statement
+  $stmt = '
+  UPDATE Requests
+  SET    votes = votes - 1
+  WHERE  id = :requestID';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind request id
+  $requestID = filter_var($requestID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':requestID', $requestID, PDO::PARAM_INT);
+
+  $sql->execute();
+  return $sql;
+}
 
 
 

@@ -53,6 +53,7 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
       </div>
     </div>
     
+    <!-- song request cards -->
     <div class="song-requests"></div>
 
   </div>

@@ -1,3 +1,5 @@
+$color-vote-arrow: #ff3300;
+
 .card-setlist {
   margin-top: 15px;
 }
@@ -48,4 +50,9 @@
 
 body {
   margin-bottom: 30px;
+}
+
+.vote-up.voted,
+.vote-down.voted {
+  color: $color-vote-arrow;
 }
