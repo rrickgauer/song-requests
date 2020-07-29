@@ -348,6 +348,41 @@ function getRequests($id) {
   return $sql;
 }
 
+// insert a new song request
+function insertRequest($setlistID, $title, $artist = null) {
+
+  // create sql statement
+  $stmt = '
+  INSERT INTO Requests
+              (setlist_id,
+               song_title,
+               song_artist,
+               date_submitted)
+  VALUES      (:setlistID,
+               :title,
+               :artist,
+               NOW())';
+
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind setlist id
+  $setlistID = filter_var($setlistID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':setlistID', $setlistID, PDO::PARAM_INT);
+
+  // filter and bind title
+  $title = filter_var($title, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':title', $title, PDO::PARAM_STR);
+
+
+  // filter and bind artist
+  $artist = filter_var($artist, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':artist', $artist, PDO::PARAM_STR);
+
+  $sql->execute();
+  return $sql;
+}
+
 
 
 

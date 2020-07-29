@@ -1,5 +1,28 @@
 <?php 
 include('functions.php'); 
+
+// check if user submitted a song request
+if (isset($_POST['new-request-title'], $_GET['id'])) {
+  $title = $_POST['new-request-title'];
+  $setlistID = $_GET['id'];
+
+  if ($_POST['new-request-artist'] == null || $_POST['new-request-artist'] == '')
+    $artist = null;
+  else
+    $artist = $_POST['new-request-artist'];
+
+  // insert request
+  $result = insertRequest($setlistID, $title, $artist)->rowCount();
+
+  // set the flag to display the successful insert alert
+  $insertedRequestSuccessfully = false;
+  if ($result == 1) {
+    $insertedRequestSuccessfully = true;
+  }
+}
+
+
+
 $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -13,6 +36,19 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
     <h1 class="text-center mt-5"><?php echo $setlistInfo['name']; ?></h1>
     <p class="text-center"><?php echo $setlistInfo['username']; ?></p>
+
+    <?php 
+
+    if (isset($insertedRequestSuccessfully) && $insertedRequestSuccessfully == true)
+      echo '
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Request submitted
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+
+    ?>
 
     <!-- song request cards -->
     <div class="split mb-3">
