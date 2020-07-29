@@ -8,10 +8,16 @@ const API = 'api.song-requests.php';
 
 
 // main function
-
 $(document).ready(function() {
+  addEventListeners();
   getRequests();
 });
+
+
+// add event listeners
+function addEventListeners() {
+  $("#modal-new-request").on('hidden.bs.modal', clearNewRequestModalInputs);
+}
 
 
 // get the song-requests from the server
@@ -23,7 +29,6 @@ function getRequests() {
 
   $.get(API, data, function(response) {
     displayRequests(JSON.parse(response));
-    // console.log(response);
   });
 }
 
@@ -32,15 +37,11 @@ function displayRequests(requests) {
   const size = requests.length;
   var html = '';
 
-  console.log(requests);
-
   for (var count = 0; count < size; count++) {
     html += getRequestCardHtml(requests[count]);
   }
 
   $(".song-requests").html(html);
-
-
 }
 
 
@@ -77,6 +78,9 @@ function getRequestCardHtml(request) {
   html += '</div>';
 
   return html;
+}
 
-
+// clears the new request modal form inputs
+function clearNewRequestModalInputs() {
+  $("#modal-new-request input").val('');
 }

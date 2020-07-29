@@ -91,7 +91,7 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
               </div>
             </div>
 
-            <input type="submit" class="btn btn-primary float-right" value="Submit">
+            <button type="submit" class="btn btn-primary float-right">Submit</button>
           </form>
         </div>
       </div>
