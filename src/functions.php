@@ -383,6 +383,17 @@ function insertRequest($setlistID, $title, $artist = null) {
   return $sql;
 }
 
+// prints out a bootstrap alert
+function getAlert($message) {
+  return "
+  <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+    $message
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+      <span aria-hidden=\"true\">&times;</span>
+    </button>
+  </div>";
+}
+
 
 
 

@@ -38,16 +38,8 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
     <p class="text-center"><?php echo $setlistInfo['username']; ?></p>
 
     <?php 
-
     if (isset($insertedRequestSuccessfully) && $insertedRequestSuccessfully == true)
-      echo '
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        Request submitted
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>';
-
+      echo getAlert('Request submitted.');
     ?>
 
     <!-- song request cards -->
