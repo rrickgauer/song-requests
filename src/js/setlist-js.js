@@ -25,6 +25,10 @@ function addEventListeners() {
   $(".song-requests").on('click', '.vote-down', function() {
     voteDown(this);
   });
+
+  $(".setlist-dropdown-filter .dropdown-item").on('click', function() {
+    filterRequests(this);
+  });
 }
 
 
@@ -56,7 +60,7 @@ function displayRequests(requests) {
 
 function getRequestCardHtml(request) {
   var html = '';
-  html += '<div class="card card-request" data-request-id="' + request.id + '">';
+  html += '<div class="card card-request" data-request-id="' + request.id + '" data-status="' + request.status + '">';
   html += '<div class="card-body">';
   html += '<div class="votes">';
   html += '<div class="votes-up">';
@@ -200,4 +204,23 @@ function decrementVoteCount(element) {
   var count = parseInt($(element).html());
   count += -1;
   $(element).html(count);
+}
+
+// filter the request cards from the dropdown
+function filterRequests(element) {
+  var status = $(element).attr('data-filter-value');
+  $(".card-request").hide();
+
+  if (status == 'pending')
+    $(".card-request[data-status='pending']").show();
+  else if (status == 'approved')
+    $(".card-request[data-status='approved']").show();
+  else if (status == 'denied')
+    $(".card-request[data-status='denied']").show();
+  else
+    $(".card-request").show();
+
+  
+  $(".setlist-dropdown-filter .dropdown-item").removeClass('active');
+  $(element).addClass('active');
 }

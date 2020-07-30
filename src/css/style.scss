@@ -56,3 +56,19 @@ body {
 .vote-down.voted {
   color: $color-vote-arrow;
 }
+
+
+#setlist-toolbar {
+  align-items: flex-end;
+
+  .left {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  .left > * {
+    margin: 0px 7px;
+  }
+}
+

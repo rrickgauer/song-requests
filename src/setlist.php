@@ -43,16 +43,45 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
       echo getAlert('Request submitted.');
     ?>
 
-    <!-- song request cards -->
-    <div class="split mb-3">
-      <div class="left">
+
+    <div class="split" id="setlist-toolbar">
+      <div class="right">
         <h5>Requests</h5>
       </div>
-      <div class="right">
+
+      <div class="left">
+
+        <!-- sort dropdown -->
+        <div class="dropdown setlist-dropdown-sort">
+          <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+            Sort
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item active" type="button" data-sort-value="original">Original</button>
+            <button class="dropdown-item" type="button" data-sort-value="artist">Artist</button>
+            <button class="dropdown-item" type="button" data-sort-value="title">Song Title</button>
+            <button class="dropdown-item" type="button" data-sort-value="votes">Votes</button>
+          </div>
+        </div>
+        
+        <!-- status filter dropdown -->
+        <div class="dropdown setlist-dropdown-filter">
+          <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+            Status
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item active" type="button" data-filter-value="all">All</button>
+            <button class="dropdown-item" type="button" data-filter-value="approved">Approved</button>
+            <button class="dropdown-item" type="button" data-filter-value="denied">Denied</button>
+            <button class="dropdown-item" type="button" data-filter-value="pending">Pending</button>
+          </div>
+        </div>
+        
         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-new-request">New</button>
       </div>
     </div>
-    
+
+
     <!-- song request cards -->
     <div class="song-requests"></div>
 
