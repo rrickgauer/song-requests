@@ -29,6 +29,12 @@ function addEventListeners() {
   $(".setlist-dropdown-filter .dropdown-item").on('click', function() {
     filterRequests(this);
   });
+
+  $(".setlist-dropdown-sort .dropdown-item").on('click', function() {
+    sortRequests(this);
+  });
+
+
 }
 
 
@@ -51,16 +57,16 @@ function displayRequests(requests) {
   var html = '';
 
   for (var count = 0; count < size; count++) {
-    html += getRequestCardHtml(requests[count]);
+    html += getRequestCardHtml(requests[count], count);
   }
 
   $(".song-requests").html(html);
 }
 
 
-function getRequestCardHtml(request) {
+function getRequestCardHtml(request, index) {
   var html = '';
-  html += '<div class="card card-request" data-request-id="' + request.id + '" data-status="' + request.status + '">';
+  html += '<div class="card card-request" data-index="' + index + '" data-request-id="' + request.id + '" data-status="' + request.status + '">';
   html += '<div class="card-body">';
   html += '<div class="votes">';
   html += '<div class="votes-up">';
@@ -223,4 +229,50 @@ function filterRequests(element) {
   
   $(".setlist-dropdown-filter .dropdown-item").removeClass('active');
   $(element).addClass('active');
+}
+
+// sort the requests
+function sortRequests(element) {
+  var sortOption = $(element).attr('data-sort-value');
+  var requests = $(".card-request");
+
+  for (var i = 0; i < requests.length - 1; i++) {
+    var min = i;
+
+    for (var j = i + 1; j < requests.length; j++) {
+
+      var jTitle, minTitle;
+
+      if (sortOption == 'artist') {
+        jTitle = $(requests[j]).find(".request-info-song-artist").html().toUpperCase();
+        minTitle = $(requests[min]).find(".request-info-song-artist").html().toUpperCase();
+      }
+
+      else if (sortOption == 'title') {
+        jTitle = $(requests[j]).find(".request-info-song-title").html().toUpperCase();
+        minTitle = $(requests[min]).find(".request-info-song-title").html().toUpperCase();
+      }
+
+      else if (sortOption == 'votes') {
+        minTitle = parseInt($(requests[j]).find(".votes-count-display").html());
+        jTitle = parseInt($(requests[min]).find(".votes-count-display").html());
+      }
+
+      else {
+        jTitle = parseInt($(requests[j]).attr('data-index'));
+        minTitle = parseInt($(requests[min]).attr('data-index'));
+      }
+
+      if (jTitle < minTitle)
+        min = j;
+
+      var temp = requests[i];
+      requests[i] = requests[min];
+      requests[min] = temp;
+    }
+  }
+
+  $(".song-requests").html(requests);
+  $(".setlist-dropdown-sort .dropdown-item").removeClass("active");
+  $(element).addClass("active");
 }

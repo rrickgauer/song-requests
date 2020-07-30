@@ -99,7 +99,7 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-new-request">New</button>
       </div>
     </div>
-
+    
 
     <!-- song request cards -->
     <div class="song-requests"></div>
