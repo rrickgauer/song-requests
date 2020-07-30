@@ -27,8 +27,7 @@ CREATE TABLE Requests (
     song_artist VARCHAR(30),
     song_title VARCHAR(50),
     status ENUM('pending', 'approved', 'denied') NOT NULL DEFAULT 'pending',
-    votes_up INT UNSIGNED NOT NULL DEFAULT 0,
-    votes_down INT UNSIGNED NOT NULL DEFAULT 0,
+    votes bigint(20) NOT NULL DEFAULT '0'
     PRIMARY KEY (id),
     FOREIGN KEY (setlist_id) REFERENCES Setlists(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB;
