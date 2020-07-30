@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS
     Requests,
     Setlists,
-    Djs
+    Djs;
 
 CREATE TABLE Djs (
     id INT UNSIGNED NOT NULL UNIQUE AUTO_INCREMENT,
