@@ -70,5 +70,10 @@ body {
   .left > * {
     margin: 0px 7px;
   }
+
+  .setlist-dropdown-filter .dropdown-item {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 

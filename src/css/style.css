@@ -55,5 +55,9 @@ body {
 #setlist-toolbar .left > * {
   margin: 0px 7px;
 }
+#setlist-toolbar .setlist-dropdown-filter .dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
 
 /*# sourceMappingURL=style.css.map */
