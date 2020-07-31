@@ -18,6 +18,10 @@ $(document).ready(function() {
 // add event listeners
 function addEventListeners() {
   $("#modal-setlist-info").on('hidden.bs.modal', cancelEditSetlistInfoForm);
+
+  $(".dropdown-filter-status .dropdown-item").on('click', function() {
+    filterTableByStatus(this);
+  });
 }
 
 
@@ -125,7 +129,7 @@ function displayRequests(requests) {
 
 // generate and return for a request table row
 function getRequestTableRowHtml(request) {
-  var html = '<tr data-request-id="' + request.id + '" data-status="' + request.status + '">';
+  var html = '<tr class="request-row" data-request-id="' + request.id + '" data-status="' + request.status + '">';
   html += '<td>' + request.song_title + '</td>';
   html += '<td>' + request.song_artist + '</td>';
   html += '<td>' + request.votes + '</td>';
@@ -145,4 +149,29 @@ function getRequestTableRowHtml(request) {
   html += '</tr>';
 
   return html;
+}
+
+
+
+// filter the table by the status dropdown
+function filterTableByStatus(element) {
+  var selectedStatus = $(element).attr('data-filter-value');
+  
+  // hide all rows initially
+  $(".request-row").hide();
+
+  // select which status rows to show
+  if (selectedStatus == 'approved')
+    $('.request-row[data-status="approved"]').show();
+  else if (selectedStatus == 'denied')
+    $('.request-row[data-status="denied"]').show();
+  else if (selectedStatus == 'pending')
+    $('.request-row[data-status="pending"]').show();
+  else
+    $(".request-row").show();
+  
+
+  // update the dropdown item to active
+  $(".dropdown-filter-status .dropdown-item").removeClass('active');
+  $(element).addClass('active');
 }

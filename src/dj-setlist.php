@@ -62,6 +62,21 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
       <div class="right d-flex">
         
+        <!-- filter by status -->
+
+        <div class="dropdown dropdown-filter-status">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+            Status filter
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item active" type="button" data-filter-value="all">All</button>
+            <button class="dropdown-item" type="button" data-filter-value="approved">Approved</button>
+            <button class="dropdown-item" type="button" data-filter-value="denied">Denied</button>
+            <button class="dropdown-item" type="button" data-filter-value="pending">Pending</button>
+          </div>
+        </div>
+
+
 
 
         <input type="text" class="form-control" id="table-search-input" placeholder="Search here...">
