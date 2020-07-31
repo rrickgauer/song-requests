@@ -61,6 +61,15 @@ else if (isset($_POST['function'], $_POST['requestID']) && $_POST['function'] ==
 }
 
 
+// return a setlist info
+else if (isset($_GET['function'], $_GET['setlistID']) && $_GET['function'] == 'get-setlist-info') {
+  $setlistID = $_GET['setlistID'];
+  $setlist = getSetlistData($setlistID)->fetch(PDO::FETCH_ASSOC);
+  echo json_encode($setlist);
+  exit;
+}
+
+
 
 
 ?>

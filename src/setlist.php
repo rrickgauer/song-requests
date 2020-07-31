@@ -35,7 +35,7 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
   <div class="container">
 
     <h1 class="text-center mt-5"><?php echo $setlistInfo['name']; ?></h1>
-    <p class="text-center"><?php echo $setlistInfo['username']; ?></p>
+    <p class="text-center"><a href="dj.php?id=<?php echo $setlistInfo['dj_id'] ?>"><?php echo $setlistInfo['username']; ?></a></p>
 
     <?php 
     // display alert if request was submitted successfully
