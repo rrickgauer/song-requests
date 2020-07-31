@@ -1,6 +1,31 @@
 <?php
 session_start();
 include('functions.php');
+
+// user edited the setlist info
+if (isset(
+  $_GET['id'], 
+  $_POST['edit-setlist-name'], 
+  $_POST['edit-setlist-time-start'], 
+  $_POST['edit-setlist-time-end'], 
+  $_POST['edit-setlist-status'])) 
+{
+
+  // send update to the server
+  $result = updateSetlist(
+    $_GET['id'], 
+    $_POST['edit-setlist-name'], 
+    $_POST['edit-setlist-status'], 
+    $_POST['edit-setlist-time-start'], 
+    $_POST['edit-setlist-time-end']);
+
+  // check if update was successful and set the flag
+  $setlistInfoUpdated = false;
+  if ($result->rowCount() == 1) {
+    $setlistInfoUpdated = true;
+  }
+}
+
 $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -17,61 +42,16 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 <body>
   <?php include('navbar.php'); ?>
   <div class="container">
+
+    <?php  
+    if (isset($setlistInfoUpdated) && $setlistInfoUpdated == true)
+      echo getAlert('Info ipdated');
+    ?>
+
     <h1 class="text-center mt-3 mb-5"><?php echo $setlist['name']; ?></h1>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-setlist-info">Setlist info</button>
 
-    <h5 class="mb-3">Setlist data</h5>
-    <!-- setlist info table -->
-    <table class="table table-sm table-striped">
-      <tbody>
-        <tr>
-          <th>setlist name</th>
-          <td><?php echo $setlist['name']; ?></td>
-        </tr>
-
-        <tr>
-          <th>dj</th>
-          <td><?php echo $setlist['username']; ?></td>
-        </tr>
-
-        <tr>
-          <th>status</th>
-          <td><?php echo $setlist['status']; ?></td>
-        </tr>
-
-        <tr>
-          <th>time_start</th>
-          <td><?php echo $setlist['time_start']; ?></td>
-        </tr>
-
-        <tr>
-          <th>time_start_display_date</th>
-          <td><?php echo $setlist['time_start_display_date']; ?></td>
-        </tr>
-
-        <tr>
-          <th>time_start_display_time</th>
-          <td><?php echo $setlist['time_start_display_time']; ?></td>
-        </tr>
-
-        <tr>
-          <th>time_end</th>
-          <td><?php echo $setlist['time_end']; ?></td>
-        </tr>
-
-        <tr>
-          <th>time_end_display_date</th>
-          <td><?php echo $setlist['time_end_display_date']; ?></td>
-        </tr>
-
-        <tr>
-          <th>time_end_display_time</th>
-          <td><?php echo $setlist['time_end_display_time']; ?></td>
-        </tr>
-
-      </tbody>
-    </table>
       
 
   </div>
@@ -137,8 +117,12 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
                     </select>
                   </div>
                 </div>
-
-                <button type="button" class="btn btn-primary float-right">Edit</button>
+                
+                <div class="buttons">
+                  <button type="button" class="btn btn-primary btn-edit-info float-right" onclick="enableEditSetlistInfoForm()">Edit</button>
+                  <input type="submit" class="btn btn-success btn-save-edit-info float-right ml-2" value="Save" hidden>
+                  <button type="button" class="btn btn-danger btn-cancel-edit-info float-right" onclick="cancelEditSetlistInfoForm()" hidden>Cancel</button>
+                </div>
               </form>
 
         </div>

@@ -9,7 +9,15 @@ const SETLIST_ID  = urlParams.get('id');                   // id
 $(document).ready(function() {
   enableTimePickers();
   getSetlistInfo();
+  addEventListeners();
+  // $("#modal-setlist-info").modal('show');
 });
+
+
+// add event listeners
+function addEventListeners() {
+  $("#modal-setlist-info").on('hidden.bs.modal', cancelEditSetlistInfoForm);
+}
 
 
 // enable time picker
@@ -29,13 +37,12 @@ function getSetlistInfo() {
   };
 
   $.get(API, data, function(response) {
-    console.log(response);
     displaySetlistModalInfo(JSON.parse(response));
   });
 }
 
 // display the setlist data to the modal
-function displaySetlistModalInfo(setlist) {\
+function displaySetlistModalInfo(setlist) {
   // set name
   $("#edit-setlist-name").val(setlist['name']);
 
@@ -65,3 +72,20 @@ function displaySetlistModalInfo(setlist) {\
 }
 
 
+// enables the user to edit the setlist info form contained in the modal
+function enableEditSetlistInfoForm() {
+  $(".edit-setlist").prop('disabled', false);
+  $(".btn-save-edit-info").prop('hidden', false);
+  $(".btn-cancel-edit-info").prop('hidden', false);
+  $(".btn-edit-info").prop('hidden', true);
+}
+
+
+// cancel setlist edit info
+function cancelEditSetlistInfoForm() {
+  getSetlistInfo();
+  $(".edit-setlist").prop('disabled', true);
+  $(".btn-save-edit-info").prop('hidden', true);
+  $(".btn-cancel-edit-info").prop('hidden', true);
+  $(".btn-edit-info").prop('hidden', false);
+}

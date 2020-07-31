@@ -452,5 +452,42 @@ function decrementVotesDown($requestID) {
 }
 
 
+// update setlist info
+function updateSetlist($setlistID, $name, $status, $timeStart, $timeEnd) {
+  $stmt = '
+  UPDATE Setlists 
+  SET    name = :name, 
+         status = :status, 
+         time_start = :timeStart, 
+         time_end = :timeEnd 
+  WHERE  id = :setlistID';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind setlist id
+  $setlistID = filter_var($setlistID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':setlistID', $setlistID, PDO::PARAM_INT);
+
+  // filter and bind name
+  $name = filter_var($name, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':name', $name, PDO::PARAM_STR);
+
+  // filter and bind title
+  $status = filter_var($status, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':status', $status, PDO::PARAM_STR);
+
+  // filter and bind artist
+  $timeStart = filter_var($timeStart, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':timeStart', $timeStart, PDO::PARAM_STR);
+
+  // filter and bind artist
+  $timeEnd = filter_var($timeEnd, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':timeEnd', $timeEnd, PDO::PARAM_STR);
+
+  $sql->execute();
+  return $sql;
+}
+
+
 
 ?>
