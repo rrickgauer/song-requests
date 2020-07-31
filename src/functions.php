@@ -354,7 +354,10 @@ function getRequests($id) {
          Requests.song_title,
          Requests.status,
          Requests.votes,
-         Requests.date_submitted
+         Requests.date_submitted,
+         DATE_FORMAT(Requests.date_submitted, "%l:%i %p") as date_submitted_display_time,
+         DATE_FORMAT(Requests.date_submitted, "%c/%d/%Y") as date_submitted_display_date,
+         UNIX_TIMESTAMP(Requests.date_submitted)          as date_submitted_unix
   FROM   Requests
   WHERE  Requests.setlist_id = :id
   ORDER  BY Requests.date_submitted ASC';
