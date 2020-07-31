@@ -492,5 +492,33 @@ function updateSetlist($setlistID, $name, $status, $timeStart, $timeEnd) {
 }
 
 
+// update a request's status
+function updateRequestStatus($requestID, $status) {
+  $stmt = '
+  UPDATE Requests
+  SET    status = :status
+  WHERE  id = :requestID';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind id
+  $requestID = filter_var($requestID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':requestID', $requestID, PDO::PARAM_INT);
+
+
+  // filter and bind status
+  if ($status != 'approved' && $status && 'denied' && $status == 'pending') {
+    $status = filter_var('pending', FILTER_SANITIZE_STRING);
+  } else {
+    $status = filter_var($status, FILTER_SANITIZE_STRING);
+  }
+
+  $sql->bindParam(':status', $status, PDO::PARAM_STR);
+
+  $sql->execute();
+  return $sql;
+}
+
+
 
 ?>

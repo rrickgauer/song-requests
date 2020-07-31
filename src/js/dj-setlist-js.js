@@ -22,6 +22,14 @@ function addEventListeners() {
   $(".dropdown-filter-status .dropdown-item").on('click', function() {
     filterTableByStatus(this);
   });
+
+  // $(".dropdown-request-actions .status-change").on('click', function() {
+  //   updateRequestStatus(this);
+  // });
+
+  $("#table-requests").on('click', ".dropdown-request-actions .status-change", function() {
+    updateRequestStatus(this);
+  });
 }
 
 
@@ -136,7 +144,7 @@ function getRequestTableRowHtml(request) {
   html += '<td data-sort="' + request.date_submitted_unix + '">' + request.date_submitted_display_date + '</td>';
   html += '<td data-sort="' + request.date_submitted_unix + '">' + request.date_submitted_display_time + '</td>';
 
-  html += '<td>';
+  html += '<td class="request-status">';
   if (request.status == 'approved')
     html += '<span class="badge badge-success">' + request.status + '</span>';
   else if (request.status == 'denied')
@@ -207,4 +215,44 @@ function filterTableByStatus(element) {
   // update the dropdown item to active
   $(".dropdown-filter-status .dropdown-item").removeClass('active');
   $(element).addClass('active');
+}
+
+
+// update a request's status
+function updateRequestStatus(element) {
+  var request = $(element).closest('.request-row');
+  var requestID = $(request).attr('data-request-id');
+  var newStatus = $(element).attr('data-status-value');
+
+  var data = {
+    function: 'update-request-status',
+    requestID: requestID,
+    status: newStatus,
+  };
+
+  $.post(API, data, function(response) {
+    if (response == 'success') {
+      setRequestStatus(request, newStatus);
+
+      // update the selected dropdown button to active
+      $(request).find(".status-change").removeClass('active');
+      $(element).addClass('active');
+    }
+  });
+}
+
+
+// change the view of the request row html to display the correct status
+function setRequestStatus(requestRow, status) {
+  var statusCell = $(requestRow).find('.request-status');
+  var html = '';
+
+  if (status == 'approved')
+    html = '<span class="badge badge-success">' + status + '</span>';
+  else if (status == 'denied')
+    html = '<span class="badge badge-danger">' + status + '</span>';
+  else
+    html = '<span class="badge badge-secondary">' + status + '</span>';
+
+  $(statusCell).html(html);
 }

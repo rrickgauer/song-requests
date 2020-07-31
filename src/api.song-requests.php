@@ -70,6 +70,18 @@ else if (isset($_GET['function'], $_GET['setlistID']) && $_GET['function'] == 'g
 }
 
 
+// update a request status
+else if (isset($_POST['function'], $_POST['requestID'], $_POST['status']) && $_POST['function'] == 'update-request-status') {
+  $result = updateRequestStatus($_POST['requestID'], $_POST['status']);
+
+  if ($result->rowCount() == 1)
+    echo 'success';
+  else
+    echo 'error';
+  
+  exit;
+}
+
 
 
 ?>
