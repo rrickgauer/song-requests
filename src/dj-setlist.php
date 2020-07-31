@@ -52,7 +52,23 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-setlist-info">Setlist info</button>
 
-    <h5 class="mt-4">Requests</h5>
+    
+
+
+    <div class="split">
+      <div class="left">
+        <h5 class="mr-2">Requests</h5>
+      </div>
+
+      <div class="right d-flex">
+        
+
+
+        <input type="text" class="form-control" id="table-search-input" placeholder="Search here...">
+      </div>
+    </div>
+
+
     <!-- requests table -->
     <div class="table-responsive" id="requests">
       <table class="table table-requests" id="table-requests">
@@ -74,7 +90,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
   </div>
 
-  <!-- setlist info -->
+  <!-- setlist info modal -->
   <div class="modal fade" id="modal-setlist-info" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -154,6 +170,9 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
   <script src="js/tablesort/tablesort.min.js"></script>
   <script src="js/tablesort/tablesort.date.min.js"></script>
   <script src="js/tablesort/tablesort.number.min.js"></script>
+
+  <!-- tablesearch -->
+  <script type="text/javascript" src="js/tablesearch.js"></script>
 
   <!-- custom js -->
   <script src="js/dj-setlist-js.js"></script>

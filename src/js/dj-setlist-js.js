@@ -115,7 +115,12 @@ function displayRequests(requests) {
   
   // display the html
   $(".table-requests tbody").html(html);
+
+  // initialize the sorting library
   new Tablesort(document.getElementById('table-requests'));
+
+  // initialize the search library
+  new TableSearch('table-search-input', 'table-requests').init();
 }
 
 // generate and return for a request table row
