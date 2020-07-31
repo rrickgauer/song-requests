@@ -78,7 +78,19 @@ else if (isset($_POST['function'], $_POST['requestID'], $_POST['status']) && $_P
     echo 'success';
   else
     echo 'error';
-  
+
+  exit;
+}
+
+// delete a request
+else if (isset($_POST['function'], $_POST['requestID']) && $_POST['function'] == 'delete-request') {
+  $result = deleteRequest($_POST['requestID']);
+
+  if ($result->rowCount() == 1)
+    echo 'success';
+  else
+    echo 'error';
+
   exit;
 }
 

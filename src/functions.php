@@ -520,5 +520,22 @@ function updateRequestStatus($requestID, $status) {
 }
 
 
+// delete a request from the db
+function deleteRequest($requestID) {
+  $stmt = '
+  DELETE FROM Requests
+  WHERE  id = :requestID';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind id
+  $requestID = filter_var($requestID, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':requestID', $requestID, PDO::PARAM_INT);
+
+  $sql->execute();
+  return $sql;
+}
+
+
 
 ?>

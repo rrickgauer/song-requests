@@ -23,12 +23,12 @@ function addEventListeners() {
     filterTableByStatus(this);
   });
 
-  // $(".dropdown-request-actions .status-change").on('click', function() {
-  //   updateRequestStatus(this);
-  // });
-
   $("#table-requests").on('click', ".dropdown-request-actions .status-change", function() {
     updateRequestStatus(this);
+  });
+
+  $("#table-requests").on('click', ".remove-request", function() {
+    removeRequest(this);
   });
 }
 
@@ -186,7 +186,7 @@ function getRequestTableRowActionDropdownHtml(request) {
   }
 
   html += '<div class="dropdown-divider"></div>';
-  html += '<button class="dropdown-item remove-request" type="button">Remove</button>';
+  html += '<button class="dropdown-item remove-request" type="button">Remove request</button>';
   html += '</div>';
   html += '</div>';
 
@@ -256,3 +256,27 @@ function setRequestStatus(requestRow, status) {
 
   $(statusCell).html(html);
 }
+
+
+// remove a request
+function removeRequest(element) {
+  var requestRow = $(element).closest('.request-row');
+  var requestID = $(requestRow).attr('data-request-id');
+
+  var data = {
+    function: 'delete-request',
+    requestID: requestID,
+  };
+
+  $.post(API, data, function(response) {
+    if (response == 'success') {
+      $(requestRow).remove();
+    }
+  });
+}
+
+
+
+
+
+
