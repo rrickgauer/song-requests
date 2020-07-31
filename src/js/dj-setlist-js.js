@@ -145,12 +145,45 @@ function getRequestTableRowHtml(request) {
     html += '<span class="badge badge-secondary">' + request.status + '</span>';
 
   html += '</td>';
-  html += '<td><i class="bx bx-cog"></i></td>';
+  html += '<td>' + getRequestTableRowActionDropdownHtml(request) + '</td>';
   html += '</tr>';
 
   return html;
 }
 
+
+// generate and return the html for the actions dropdown menu
+function getRequestTableRowActionDropdownHtml(request) {
+  var html = '<div class="dropleft dropdown-request-actions">';
+  html += '<i class="bx bx-cog" data-toggle="dropdown"></i>';
+  html += '<div class="dropdown-menu">';
+  html += '<h6 class="dropdown-header">Change status</h6>';
+
+  if (request.status == 'approved') {
+    html += '<button class="dropdown-item status-change active" type="button" data-status-value="approved">Approved</button>';
+    html += '<button class="dropdown-item status-change" type="button" data-status-value="denied">Denied</button>';
+    html += '<button class="dropdown-item status-change" type="button" data-status-value="pending">Pending</button>';
+  }
+
+  else if (request.status == 'denied') {
+    html += '<button class="dropdown-item status-change" type="button" data-status-value="approved">Approved</button>';
+    html += '<button class="dropdown-item status-change active" type="button" data-status-value="denied">Denied</button>';
+    html += '<button class="dropdown-item status-change" type="button" data-status-value="pending">Pending</button>';
+  }
+
+  else {
+    html += '<button class="dropdown-item status-change" type="button" data-status-value="approved">Approved</button>';
+    html += '<button class="dropdown-item status-change" type="button" data-status-value="denied">Denied</button>';
+    html += '<button class="dropdown-item status-change active" type="button" data-status-value="pending">Pending</button>';
+  }
+
+  html += '<div class="dropdown-divider"></div>';
+  html += '<button class="dropdown-item remove-request" type="button">Remove</button>';
+  html += '</div>';
+  html += '</div>';
+
+  return html;
+}
 
 
 // filter the table by the status dropdown

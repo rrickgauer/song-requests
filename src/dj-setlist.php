@@ -49,11 +49,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
     ?>
 
     <h1 class="text-center mt-3 mb-5"><?php echo $setlist['name']; ?></h1>
-
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-setlist-info">Setlist info</button>
-
-    
-
 
     <div class="split">
       <div class="left">
@@ -75,10 +71,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
             <button class="dropdown-item" type="button" data-filter-value="pending">Pending</button>
           </div>
         </div>
-
-
-
-
+        
         <input type="text" class="form-control" id="table-search-input" placeholder="Search here...">
       </div>
     </div>
