@@ -8,6 +8,7 @@ const SETLIST_ID  = urlParams.get('id');                   // id
 // main 
 $(document).ready(function() {
   enableTimePickers();
+  getRequests();
   getSetlistInfo();
   addEventListeners();
   // $("#modal-setlist-info").modal('show');
@@ -88,4 +89,44 @@ function cancelEditSetlistInfoForm() {
   $(".btn-save-edit-info").prop('hidden', true);
   $(".btn-cancel-edit-info").prop('hidden', true);
   $(".btn-edit-info").prop('hidden', false);
+}
+
+// get the request data from server
+function getRequests() {
+
+  var data = {
+    function: "get-setlist-requests",
+    id: SETLIST_ID,
+  };
+
+  $.get(API, data, function(response) {
+    displayRequests(JSON.parse(response));
+  });
+}
+
+
+// display the requests table data
+function displayRequests(requests) {
+
+  const size = requests.length;
+  var html = '';
+  for (var count = 0; count < size; count++) {
+    html += getRequestTableRowHtml(requests[count]);
+  }
+
+  $(".table-requests tbody").html(html);
+
+}
+
+function getRequestTableRowHtml(request) {
+  var html = '<tr data-request-id="' + request.id + '">';
+  html += '<td>' + request.song_title + '</td>';
+  html += '<td>' + request.song_artist + '</td>';
+  html += '<td>' + request.votes + '</td>';
+  html += '<td>' + request.date_submitted + '</td>';
+  html += '<td>' + request.status + '</td>';
+  html += '<td><i class="bx bx-cog"></i></td>';
+  html += '</tr>';
+
+  return html;
 }

@@ -52,6 +52,28 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-setlist-info">Setlist info</button>
 
+
+    <!-- requests table -->
+    <div class="table-responsive mt-4" id="requests">
+      
+      <table class="table table-requests">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Votes</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        
+      </table>
+
+    </div>
+
       
 
   </div>
