@@ -114,4 +114,9 @@ button:active, button:focus, button:hover {
   font-weight: bold;
 }
 
+.form-group .edit-setlist-time:enabled,
+.form-group .new-setlist-time:enabled {
+  background-color: white;
+}
+
 /*# sourceMappingURL=style.css.map */

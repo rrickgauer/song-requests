@@ -122,7 +122,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class='bx bxs-playlist'></i></span>
                     </div>
-                    <input type="text" class="form-control edit-setlist edit-setlist-name" id="edit-setlist-name" name="edit-setlist-name" disabled required>
+                    <input type="text" class="form-control edit-setlist edit-setlist-name disabled" id="edit-setlist-name" name="edit-setlist-name" disabled required>
                   </div>
                 </div>
 

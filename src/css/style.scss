@@ -150,3 +150,11 @@ button {
 .form-group label {
   font-weight: bold;
 }
+
+.form-group {
+  .edit-setlist-time:enabled,
+  .new-setlist-time:enabled {
+    background-color: white;
+  } 
+}
+
