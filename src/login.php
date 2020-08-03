@@ -50,7 +50,7 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
 
     <div class="tab-content mt-5">
       <div class="tab-pane fade show active" id="login">
-        <form method="post">
+        <form method="post" id="login-form">
           <!-- username -->
           <div class="form-group">
             <label for="login-username">Username:</label>
@@ -81,7 +81,7 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
 
       <div class="tab-pane fade" id="create-account">
         <!-- create account -->
-        <form method="post">
+        <form method="post" id="new-account-form">
           <!-- new-username -->
           <div class="form-group">
             <label for="new-username">Username:</label>

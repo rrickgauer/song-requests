@@ -66,4 +66,9 @@ body {
   color: #0099ff;
 }
 
+#login-form,
+#new-account-form {
+  padding: 0px 300px;
+}
+
 /*# sourceMappingURL=style.css.map */
