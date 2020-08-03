@@ -5,6 +5,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const SETLIST_ID = urlParams.get('id');                   // setlist id
 const API = 'api.song-requests.php';
+const GOOGLE_SEARCH = 'https://clients1.google.com/complete/search?client=youtube&tok=Iu2UFybBVjvwBqGBmnMaKw&callback=?&q=';
 
 
 // main function
@@ -34,7 +35,8 @@ function addEventListeners() {
     sortRequests(this);
   });
 
-
+  $("#new-request-title").on('keyup', getTitleSuggestions);
+  $("#new-request-artist").on('keyup', getArtistSuggestions);
 }
 
 
@@ -275,4 +277,46 @@ function sortRequests(element) {
   $(".song-requests").html(requests);
   $(".setlist-dropdown-sort .dropdown-item").removeClass("active");
   $(element).addClass("active");
+}
+
+
+// autocomplete title
+function getTitleSuggestions() {
+  var query = $("#new-request-title").val();
+  $.getJSON(GOOGLE_SEARCH + query, function(response) {
+    var suggestions = response[1];
+    var html = '';
+
+    // determine the length
+    var size = suggestions.length;
+    if (size > 5)
+      size = 5;
+
+    for (var count = 0; count < size; count++) {
+      html += '<option value="' + suggestions[count][0] + '">' + suggestions[count][0] + '</option>';
+    }
+
+    $("#suggested-titles").html(html);
+  });
+}
+
+
+// display suggestions for new artist
+function getArtistSuggestions() {
+  var query = $("#new-request-artist").val();
+  $.getJSON(GOOGLE_SEARCH + query, function(response) {
+    var suggestions = response[1];
+    var html = '';
+
+    // determine the length
+    var size = suggestions.length;
+    if (size > 5)
+      size = 5;
+
+    for (var count = 0; count < size; count++) {
+      html += '<option value="' + suggestions[count][0] + '">' + suggestions[count][0] + '</option>';
+    }
+
+    $("#suggested-artists").html(html);
+  });
 }

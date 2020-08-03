@@ -108,7 +108,7 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
   <!-- new song-request modal -->
   <div class="modal fade" id="modal-new-request" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">New song request</h5>
@@ -125,7 +125,10 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class='bx bx-music'></i></span>
                 </div>
-                <input type="text" class="form-control" id="new-request-title" name="new-request-title" placeholder="Enter title here" required>
+                <input list="suggested-titles" class="form-control" id="new-request-title" name="new-request-title" placeholder="Enter title here" required>
+
+                <!-- title suggestions -->
+                <datalist id="suggested-titles"></datalist>
               </div>
             </div>
 
@@ -136,7 +139,11 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class='bx bx-user'></i></span>
                 </div>
-                <input type="text" class="form-control" id="new-request-artist" name="new-request-artist" placeholder="Enter artist here">
+                <input list="suggested-artists" class="form-control" id="new-request-artist" name="new-request-artist" placeholder="Enter artist here">
+                
+                <!-- artist suggestions -->
+                <datalist id="suggested-artists"></datalist>
+
               </div>
             </div>
 
@@ -149,6 +156,7 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
 
 <?php include('footer.php'); ?>
+<script src="js/type-ahead.min.js"></script>
 <script src="js/setlist-js.js"></script>
 </body>
 </html>
