@@ -70,13 +70,13 @@ function getRequestCardHtml(request, index) {
   html += '<div class="card-body">';
   html += '<div class="votes">';
   html += '<div class="votes-up">';
-  html += '<i class="bx bxs-up-arrow vote-up"></i>';
+  html += '<i class="bx bxs-up-arrow vote-arrow vote-up hover-pointer"></i>';
   html += '</div>';
   html += '<div class="votes-count">';
   html += '<span class="votes-count-display">' + request.votes + '</span>';
   html += '</div>';
   html += '<div class="votes-down">';
-  html += '<i class="bx bxs-down-arrow vote-down"></i>';
+  html += '<i class="bx bxs-down-arrow vote-arrow vote-down hover-pointer"></i>';
   html += '</div>';
   html += '</div>';
   html += '<div class="request-info">';

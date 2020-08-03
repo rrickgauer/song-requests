@@ -102,4 +102,12 @@ button:active, button:focus, button:hover {
   border-color: #ed1d69;
 }
 
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+.vote-arrow:hover {
+  color: #ff3300;
+}
+
 /*# sourceMappingURL=style.css.map */

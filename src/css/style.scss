@@ -139,4 +139,10 @@ button {
   }
 }
 
+.hover-pointer:hover {
+  cursor: pointer;
+}
 
+.vote-arrow:hover {
+  color: $color-vote-arrow;
+}
