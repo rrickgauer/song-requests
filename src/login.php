@@ -4,15 +4,24 @@ include('functions.php');
 
 // user attempted to create an account
 if (isset($_POST['new-username'], $_POST['new-password'])) {
-  $sqlResult = insertDj($_POST['new-username'], $_POST['new-password']);
+  $username = $_POST['new-username'];
+  $password = $_POST['new-password'];
+  $sqlResult = insertDj($username, $password);
+
+  // go to dj's new profile page
+  if ($sqlResult->rowCount() == 1) {
+    session_start();
+    $_SESSION['id'] = getDjIdFromUsername($username);
+    
+    // go to profile
+    header('Location: profile.php');
+    exit;
+  }
 }
 
 // user attempted to login
 else if (isset($_POST['login-username'], $_POST['login-password'])) {
   if (isValidUsernameAndPassword($_POST['login-username'], $_POST['login-password'])) {
-    // get the djid and go to their page
-    // $result = getDjIdFromUsername()->fetch(PDO::FETCH_ASSOC);
-    
     // start the session and save session dj id
     session_start();
     $_SESSION['id'] = getDjIdFromUsername($_POST['login-username']);
