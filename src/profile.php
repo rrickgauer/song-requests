@@ -88,7 +88,7 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
               <label for="new-setlist-name">Name:</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class='bx bx-list-ul'></i></span>
+                  <span class="input-group-text"><i class="bx bxs-playlist"></i></span>
                 </div>
                 <input type="text" class="form-control new-setlist new-setlist-name" id="new-setlist-name" name="new-setlist-name" required>
               </div>
