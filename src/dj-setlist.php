@@ -48,21 +48,24 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
       echo getAlert('Info ipdated');
     ?>
 
-    <h1 class="text-center mt-3 mb-5"><?php echo $setlist['name']; ?></h1>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-setlist-info">Setlist info</button>
+    
+    <!-- Setlist name and modal button -->
+    <div class="d-flex justify-content-center align-items-center">
+      <h1><?php echo $setlist['name']; ?></h1>
+      <button type="button" class="btn btn-setlist-info" data-toggle="modal" data-target="#modal-setlist-info"><i class='bx bx-info-circle'></i></button>
+    </div>
 
-    <div class="split">
+    <div class="split mt-5 mb-3">
       <div class="left">
-        <h5 class="mr-2">Requests</h5>
+        <h5>Requests</h5>
       </div>
 
       <div class="right d-flex">
         
         <!-- filter by status -->
-
-        <div class="dropdown dropdown-filter-status">
+        <div class="dropdown dropdown-filter-status mr-3">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-            Status filter
+            Status
           </button>
           <div class="dropdown-menu">
             <button class="dropdown-item active" type="button" data-filter-value="all">All</button>

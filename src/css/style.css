@@ -60,4 +60,10 @@ body {
   justify-content: space-between;
 }
 
+.btn-setlist-info {
+  padding: 0;
+  margin-left: 12px;
+  color: #0099ff;
+}
+
 /*# sourceMappingURL=style.css.map */
