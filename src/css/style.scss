@@ -93,3 +93,13 @@ body {
 #new-account-form {
   padding: 0px 300px;
 }
+
+
+.modal-header {
+  background-color: $color-dark;
+  color: white;
+
+  button.close {
+    color: white;
+  }
+}
