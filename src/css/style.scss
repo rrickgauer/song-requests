@@ -112,3 +112,31 @@ body {
 .card {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
 }
+
+section#navbar {
+  background-color: $color-dark;
+}
+
+button {
+  &:active,
+  &:focus,
+  &:hover {
+    opacity: 0.8;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+.btn-primary {
+  &,
+  &:focus,
+  &:active,
+  &:hover,
+  &:visited,
+  &:not(:disabled):not(.disabled):active {
+    background-color: $color-pink;
+    border-color: $color-pink;
+  }
+}
+
+

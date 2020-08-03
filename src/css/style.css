@@ -87,4 +87,19 @@ body {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
 }
 
+section#navbar {
+  background-color: #223843;
+}
+
+button:active, button:focus, button:hover {
+  opacity: 0.8;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary:hover, .btn-primary:visited, .btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #ed1d69;
+  border-color: #ed1d69;
+}
+
 /*# sourceMappingURL=style.css.map */
