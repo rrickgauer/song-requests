@@ -81,23 +81,28 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
 
     <!-- requests table -->
-    <div class="table-responsive" id="requests">
-      <table class="table table-requests" id="table-requests">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th data-sort-method="number">Votes</th>
-            <th data-sort-method="number">Date</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+    <div class="card card-table-requests">
+      <div class="card-body">
+        <div class="table-responsive" id="requests">
+          <table class="table table-requests" id="table-requests">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th data-sort-method="number">Votes</th>
+                <th data-sort-method="number">Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+
 
   </div>
 

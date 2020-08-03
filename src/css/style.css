@@ -119,4 +119,12 @@ button:active, button:focus, button:hover {
   background-color: white;
 }
 
+.card-table-requests .card-body {
+  padding: 10px;
+}
+
+#table-requests thead tr th {
+  border-top: none;
+}
+
 /*# sourceMappingURL=style.css.map */

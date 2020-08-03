@@ -158,3 +158,15 @@ button {
   } 
 }
 
+.card-table-requests {
+  .card-body {
+    padding: 10px;
+  }
+}
+
+#table-requests {
+  thead tr th {
+    border-top: none;
+  }
+}
+
