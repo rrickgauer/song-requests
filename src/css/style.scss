@@ -107,3 +107,8 @@ body {
 body {
   background-color: $color-grey;
 }
+
+// custom shadows
+.card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+}
