@@ -7,6 +7,7 @@ if (isset($_POST['new-username'], $_POST['new-password'])) {
   $username = $_POST['new-username'];
   $password = $_POST['new-password'];
   $sqlResult = insertDj($username, $password);
+  $isAccountCreated = true;
 
   // go to dj's new profile page
   if ($sqlResult->rowCount() == 1) {
@@ -16,11 +17,15 @@ if (isset($_POST['new-username'], $_POST['new-password'])) {
     // go to profile
     header('Location: profile.php');
     exit;
+  } else {
+    $isAccountCreated = false;
   }
 }
 
 // user attempted to login
 else if (isset($_POST['login-username'], $_POST['login-password'])) {
+  $isValidLoginAttempt = true;
+
   if (isValidUsernameAndPassword($_POST['login-username'], $_POST['login-password'])) {
     // start the session and save session dj id
     session_start();
@@ -29,6 +34,8 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
     // go to profile
     header('Location: profile.php');
     exit;
+  } else {
+    $isValidLoginAttempt = false;
   }
 }
 
@@ -56,6 +63,14 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
         <a class="nav-link" data-toggle="pill" href="#create-account" role="tab">Sign up</a>
       </li>
     </ul>
+
+    <?php
+      if (isset($isAccountCreated) && $isAccountCreated == false) {
+        echo getAlert('There was an error when creating your account. Please try again.', 'danger');
+      } else if (isset($isValidLoginAttempt) && $isValidLoginAttempt == false) {
+        echo getAlert('Username and password do not match.', 'danger');
+      }
+    ?>
 
     <div class="tab-content mt-5">
       <div class="tab-pane fade show active" id="login">
