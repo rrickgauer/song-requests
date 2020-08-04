@@ -77,6 +77,9 @@ body {
   background-color: #223843;
   color: white;
 }
+.modal-header .modal-title {
+  font-family: "Rambla", sans-serif;
+}
 .modal-header button.close {
   color: white;
 }
@@ -152,6 +155,7 @@ button:active, button:focus, button:hover, button:disabled {
   border-bottom: 5px solid #223843;
   margin: 5px 10px;
   padding: 3px;
+  font-weight: bold;
 }
 .navbar .nav-link:hover, .navbar .nav-link.active {
   border-bottom-color: #ed1d69;

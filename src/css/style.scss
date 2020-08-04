@@ -101,6 +101,10 @@ body {
   background-color: $color-dark;
   color: white;
 
+  .modal-title {
+    font-family: $font;
+  }
+
   button.close {
     color: white;
   }
@@ -201,6 +205,7 @@ button {
     border-bottom: 5px solid $color-dark;
     margin: 5px 10px;
     padding: 3px;
+    font-weight: bold;
 
     &:hover,
     &.active {

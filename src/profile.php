@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('functions.php');
-$djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 
 // creat new setlist
 if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['new-setlist-time-end'], $_POST['new-setlist-status'])) {
@@ -22,6 +21,7 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
   }
 }
 
+$djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -60,7 +60,7 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
         
         <div class="split">
           <div class="left">
-            <h5>Your setlists</h5>
+            <h5>Your setlists (<?php echo $djInfo['count_setlists']; ?>)</h5>
           </div>
           <div class="right">
             <span class="mr-3 font-weight-bold">Sort:&nbsp</span>

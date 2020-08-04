@@ -84,8 +84,20 @@ function getDjIdFromUsername($username) {
 
 // get dj info from id
 function getDjInfo($id) {
-  $pdo = dbConnect();
-  $sql = $pdo->prepare('SELECT id, username FROM Djs WHERE id=:id LIMIT 1');
+  // $pdo = dbConnect();
+  // $sql = $pdo->prepare('SELECT Djs.id, Djs.username, (select count(Setlists.id) from Setlists where Setlists.dj_id = Djs.id) as count_setlists FROM Djs WHERE id=:id LIMIT 1');
+
+  $stmt = '
+  SELECT Djs.id,
+         Djs.username,
+         (SELECT COUNT(Setlists.id)
+          FROM   Setlists
+          WHERE  Setlists.dj_id = Djs.id) AS count_setlists
+  FROM   Djs
+  WHERE  id = :id
+  LIMIT  1';
+
+  $sql = dbConnect()->prepare($stmt);
 
   $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
   $sql->bindParam(':id', $id, PDO::PARAM_INT);
