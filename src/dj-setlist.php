@@ -56,7 +56,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
     <div class="split mt-5 mb-3">
       <div class="left">
-        <h5>Requests</h5>
+        <h5>Requests (<?php echo $setlist['count_status_all']; ?>)</h5>
       </div>
 
       <div class="right d-flex">
