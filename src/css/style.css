@@ -66,9 +66,11 @@ body {
   color: #0099ff;
 }
 
-#login-form,
-#new-account-form {
-  padding: 0px 300px;
+.card-login-form {
+  margin: 0px 200px;
+}
+.card-login-form .card-header h6 {
+  margin-bottom: 0px;
 }
 
 .modal-header {

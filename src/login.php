@@ -73,64 +73,79 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
     ?>
 
     <div class="tab-content mt-5">
+
+      <!-- login form -->
       <div class="tab-pane fade show active" id="login">
-        <form method="post" id="login-form">
-          <!-- username -->
-          <div class="form-group">
-            <label for="login-username">Username:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class='bx bx-user'></i></span>
-              </div>
-              <input type="text" class="form-control" id="login-username" name="login-username" required>
-            </div>
+        <div class="card card-login-form">
+          <div class="card-header">
+            <h6>Log in to your account</h6>
           </div>
-
-          <!-- password -->
-          <div class="form-group">
-            <label for="login-password">Password:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+          <div class="card-body">
+            <form method="post" id="login-form">
+              <!-- username -->
+              <div class="form-group">
+                <label for="login-username">Username:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class='bx bx-user'></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="login-username" name="login-username" required>
+                </div>
               </div>
-              <input type="password" class="form-control" id="login-password" name="login-password" required>
-            </div>
+
+              <!-- password -->
+              <div class="form-group">
+                <label for="login-password">Password:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+                  </div>
+                  <input type="password" class="form-control" id="login-password" name="login-password" required>
+                </div>
+              </div>
+
+              <input type="submit" class="btn btn-primary" value="Log in">
+            </form>
           </div>
-
-          <input type="submit" class="btn btn-primary" value="Log in">
-        </form>
-
+        </div>
       </div>
-
-
+  
+      <!-- create account form -->
       <div class="tab-pane fade" id="create-account">
-        <!-- create account -->
-        <form method="post" id="new-account-form">
-          <!-- new-username -->
-          <div class="form-group">
-            <label for="new-username">Username:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class='bx bx-user'></i></span>
-              </div>
-              <input type="text" class="form-control" id="new-username" name="new-username" required>
-            </div>
+        <div class="card card-login-form">
+          <div class="card-header">
+            <h6>Create a new account</h6>
           </div>
-
-          <!-- new password -->
-          <div class="form-group">
-            <label for="new-password">Password:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+          <div class="card-body">
+            <form method="post" id="new-account-form">
+              <!-- new-username -->
+              <div class="form-group">
+                <label for="new-username">Username:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class='bx bx-user'></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="new-username" name="new-username" required>
+                </div>
               </div>
-              <input type="password" class="form-control" id="new-password" name="new-password" required>
-            </div>
-          </div>
 
-          <input type="submit" class="btn btn-primary" value="Sign up">
-        </form>
+              <!-- new password -->
+              <div class="form-group">
+                <label for="new-password">Password:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+                  </div>
+                  <input type="password" class="form-control" id="new-password" name="new-password" required>
+                </div>
+              </div>
+
+              <input type="submit" class="btn btn-primary" value="Sign up">
+            </form>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <p class="text-center mt-4">Want to submit a song request? <a href="home.php">Search here</a></p>
