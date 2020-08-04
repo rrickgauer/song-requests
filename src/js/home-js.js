@@ -11,8 +11,8 @@ Functions
 
 // main function
 $(document).ready(function() {
-  // code here
   addEventListeners();
+  $("#nav-item-home").addClass('active');
 });
 
 function addEventListeners() {

@@ -6,6 +6,7 @@ $(document).ready(function() {
   addEventListeners();
   enableFlatpickr();
   getSetlists();
+  $("#nav-item-profile").addClass('active');
 
 });
 

@@ -156,5 +156,10 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
 
 
 <?php include('footer.php'); ?>
+<script>
+  $(document).ready(function() {
+    $("#nav-item-login").addClass('active');
+  });
+</script>
 </body>
 </html>

@@ -190,9 +190,22 @@ button {
 
 .navbar {
   background-color: $color-dark;
+
   .navbar-brand,
   .nav-link {
     color: white;
+  }
+
+  .nav-link {
+    color: white;
+    border-bottom: 5px solid $color-dark;
+    margin: 5px 10px;
+    padding: 3px;
+
+    &:hover,
+    &.active {
+      border-bottom-color: $color-pink;
+    }
   }
 }
 

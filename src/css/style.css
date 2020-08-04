@@ -147,6 +147,15 @@ button:active, button:focus, button:hover, button:disabled {
 .navbar .nav-link {
   color: white;
 }
+.navbar .nav-link {
+  color: white;
+  border-bottom: 5px solid #223843;
+  margin: 5px 10px;
+  padding: 3px;
+}
+.navbar .nav-link:hover, .navbar .nav-link.active {
+  border-bottom-color: #ed1d69;
+}
 
 .custom-font {
   font-family: "Rambla", sans-serif;
