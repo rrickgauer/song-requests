@@ -407,9 +407,9 @@ function insertRequest($setlistID, $title, $artist = null) {
 }
 
 // prints out a bootstrap alert
-function getAlert($message) {
+function getAlert($message, $alertType = 'success') {
   return "
-  <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+  <div class=\"alert alert-$alertType alert-dismissible fade show\" role=\"alert\">
     $message
     <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
       <span aria-hidden=\"true\">&times;</span>
