@@ -11,7 +11,7 @@
 
 
   <div class="container">
-    <h1 class="text-center mt-5 mb-5">Song Requests</h1>
+    <h1 class="text-center custom-font mt-5 mb-5">Find a setlist</h1>
 
     <!-- search filter options -->
     <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">

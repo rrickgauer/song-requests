@@ -32,7 +32,7 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
   <!-- flatpickr -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <title>DJ Profile Page</title>
+  <title><?php echo $djInfo['username']; ?></title>
 </head>
 <body>
   <?php include('navbar.php'); ?>
@@ -40,7 +40,7 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
   
     <div class="split mt-3 mb-5">
       <div class="left">
-        <h1><?php echo $djInfo['username']; ?></h1>
+        <h1 class="custom-font"><?php echo $djInfo['username']; ?></h1>
       </div>
       <div class="right">
         <a href="account-settings.php">Settings</a>

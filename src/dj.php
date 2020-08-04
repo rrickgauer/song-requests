@@ -11,11 +11,10 @@ $djInfo = getDjInfo($_GET['id'])->fetch(PDO::FETCH_ASSOC);
   <title><?php echo $djInfo['username']; ?></title>
 </head>
 <body>
+  <?php include('navbar-user.php'); ?>
 
   <div class="container">
-
-    <h1 class="text-center mt-5"><?php echo $djInfo['username']; ?></h1>
-
+    <h1 class="text-center custom-font mt-5"><?php echo $djInfo['username']; ?></h1>
     <h5>Setlists</h5>
 
     <!-- dj setlist cards go here -->

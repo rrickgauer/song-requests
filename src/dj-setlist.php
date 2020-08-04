@@ -50,7 +50,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
     
     <!-- Setlist name and modal button -->
     <div class="d-flex justify-content-center align-items-center mt-5">
-      <h1><?php echo $setlist['name']; ?></h1>
+      <h1 class="custom-font"><?php echo $setlist['name']; ?></h1>
       <button type="button" class="btn btn-setlist-info" data-toggle="modal" data-target="#modal-setlist-info"><i class='bx bx-info-circle'></i></button>
     </div>
 

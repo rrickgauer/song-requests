@@ -32,9 +32,9 @@ $setlistInfo = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
   <title><?php echo $setlistInfo['name']; ?></title>
 </head>
 <body>
+  <?php include('navbar-user.php'); ?>
   <div class="container">
-
-    <h1 class="text-center mt-5"><?php echo $setlistInfo['name']; ?></h1>
+    <h1 class="text-center custom-font mt-5"><?php echo $setlistInfo['name']; ?></h1>
     <p class="text-center"><a href="dj.php?id=<?php echo $setlistInfo['dj_id'] ?>"><?php echo $setlistInfo['username']; ?></a></p>
 
     <?php 

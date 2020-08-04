@@ -41,7 +41,7 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 
   <div class="container">
     
-    <h1 class="text-center mt-5">Account settings</h1>
+    <h1 class="text-center custom-font mt-5">Account settings</h1>
 
     <?php 
     // display alert saying we updated their username

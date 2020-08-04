@@ -55,7 +55,7 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
   <!-- main container -->
   <div class="container">
 
-    <h1 class="text-center mt-5">Log in to your account</h1>
+    <h1 class="text-center custom-font mt-5">Sign in to song requests</h1>
 
     <ul class="nav nav-pills justify-content-center mt-5">
       <li class="nav-item" role="presentation">
