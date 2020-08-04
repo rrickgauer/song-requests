@@ -137,4 +137,9 @@ button:active, button:focus, button:hover {
   color: #7fdeff;
 }
 
+.dropdown-filter-status .dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -182,5 +182,10 @@ button {
   color: $color-blue;
 }
 
+.dropdown-filter-status .dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 

@@ -27,7 +27,6 @@ if (isset(
 }
 
 $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +67,26 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
             Status
           </button>
           <div class="dropdown-menu">
-            <button class="dropdown-item active" type="button" data-filter-value="all">All</button>
-            <button class="dropdown-item" type="button" data-filter-value="approved">Approved</button>
-            <button class="dropdown-item" type="button" data-filter-value="denied">Denied</button>
-            <button class="dropdown-item" type="button" data-filter-value="pending">Pending</button>
+            <!-- all -->
+            <button class="dropdown-item active" type="button" data-filter-value="all">
+              <span class="label">All</span>
+              <span class="badge badge-secondary"><?php echo $setlist['count_status_all']; ?></span>
+            </button>
+            <!-- approved -->
+            <button class="dropdown-item" type="button" data-filter-value="approved">
+              <span class="label">Approved</span>
+              <span class="badge badge-secondary"><?php echo $setlist['count_status_approved']; ?></span>
+            </button>
+            <!-- denied -->
+            <button class="dropdown-item" type="button" data-filter-value="denied">
+              <span class="label">Denied</span>
+              <span class="badge badge-secondary"><?php echo $setlist['count_status_denied']; ?></span>
+            </button>
+            <!-- pending -->
+            <button class="dropdown-item" type="button" data-filter-value="pending">
+              <span class="label">Pending</span>
+              <span class="badge badge-secondary"><?php echo $setlist['count_status_pending']; ?></span>
+            </button>
           </div>
         </div>
         
