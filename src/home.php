@@ -6,8 +6,11 @@
   <title>Song Requests</title>
 </head>
 <body>
-  <div class="container">
+  
+<?php include('navbar-user.php'); ?>
 
+
+  <div class="container">
     <h1 class="text-center mt-5 mb-5">Song Requests</h1>
 
     <!-- search filter options -->

@@ -89,10 +89,6 @@ body {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
 }
 
-section#navbar {
-  background-color: #223843;
-}
-
 button:active, button:focus, button:hover, button:disabled {
   opacity: 0.8;
   box-shadow: none !important;
@@ -142,6 +138,18 @@ button:active, button:focus, button:hover, button:disabled {
 .dropdown-filter-status .dropdown-item {
   display: flex;
   justify-content: space-between;
+}
+
+.navbar {
+  background-color: #223843;
+}
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: white;
+}
+
+.custom-font {
+  font-family: "Rambla", sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

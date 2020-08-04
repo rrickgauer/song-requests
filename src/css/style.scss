@@ -114,10 +114,6 @@ body {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
 }
 
-section#navbar {
-  background-color: $color-dark;
-}
-
 button {
   &:active,
   &:focus,
@@ -190,5 +186,17 @@ button {
   justify-content: space-between;
 }
 
+
+.navbar {
+  background-color: $color-dark;
+  .navbar-brand,
+  .nav-link {
+    color: white;
+  }
+}
+
+.custom-font {
+  font-family: 'Rambla', sans-serif;
+}
 
 

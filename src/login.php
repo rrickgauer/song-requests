@@ -49,6 +49,8 @@ else if (isset($_POST['login-username'], $_POST['login-password'])) {
   <title>Login</title>
 </head>
 <body>
+
+  <?php include('navbar-user.php'); ?>
   
   <!-- main container -->
   <div class="container">
