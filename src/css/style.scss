@@ -168,5 +168,19 @@ button {
   thead tr th {
     border-top: none;
   }
+
+  thead th {
+    &:hover {cursor: pointer;}
+
+    &.column-sorted {
+      color: $color-vote-arrow;
+    }
+  }
 }
+
+.dropdown-request-actions:hover {
+  color: $color-blue;
+}
+
+
 

@@ -90,7 +90,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
                 <th>Title</th>
                 <th>Artist</th>
                 <th data-sort-method="number">Votes</th>
-                <th data-sort-method="number">Date</th>
+                <th class="column-sorted" data-sort-method="number">Date</th>
                 <th>Time</th>
                 <th>Status</th>
                 <th>Actions</th>

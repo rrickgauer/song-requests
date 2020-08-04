@@ -126,5 +126,15 @@ button:active, button:focus, button:hover {
 #table-requests thead tr th {
   border-top: none;
 }
+#table-requests thead th:hover {
+  cursor: pointer;
+}
+#table-requests thead th.column-sorted {
+  color: #ff3300;
+}
+
+.dropdown-request-actions:hover {
+  color: #7fdeff;
+}
 
 /*# sourceMappingURL=style.css.map */

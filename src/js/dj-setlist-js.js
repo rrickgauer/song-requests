@@ -30,6 +30,10 @@ function addEventListeners() {
   $("#table-requests").on('click', ".remove-request", function() {
     removeRequest(this);
   });
+
+  $("#table-requests th").on('click', function() {
+    addColumnSortedClass(this);
+  });
 }
 
 
@@ -163,7 +167,7 @@ function getRequestTableRowHtml(request) {
 // generate and return the html for the actions dropdown menu
 function getRequestTableRowActionDropdownHtml(request) {
   var html = '<div class="dropleft dropdown-request-actions">';
-  html += '<i class="bx bx-cog" data-toggle="dropdown"></i>';
+  html += '<i class="bx bx-cog hover-pointer" data-toggle="dropdown"></i>';
   html += '<div class="dropdown-menu">';
   html += '<h6 class="dropdown-header">Change status</h6>';
 
@@ -275,6 +279,11 @@ function removeRequest(element) {
   });
 }
 
+// makes the column header text red when sorted
+function addColumnSortedClass(element) {
+  $("#table-requests th").removeClass('column-sorted');
+  $(element).addClass('column-sorted');
+}
 
 
 
