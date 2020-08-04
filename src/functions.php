@@ -583,5 +583,26 @@ function updateUsername($id, $username) {
   return $sql;
 }
 
+// update a dj's password
+function updatePassword($id, $newPassword) {
+  $stmt = '
+  UPDATE Djs
+  SET    password = :newPassword
+  WHERE  id = :id';
 
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind dj id
+  $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':id', $id, PDO::PARAM_INT);
+
+  // sanitize, hash, and bind password
+  $newPassword = filter_var($newPassword, FILTER_SANITIZE_STRING);
+  $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+  $sql->bindParam(':newPassword', $hashedPassword, PDO::PARAM_STR);
+
+  $sql->execute();
+  return $sql;
+
+}
 ?>

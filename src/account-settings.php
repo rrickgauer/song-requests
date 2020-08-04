@@ -12,9 +12,19 @@ if (isset($_POST['new-username'], $_SESSION['id'])) {
     $isUsernameUpdated = true;
 }
 
+// change password
+if (isset($_POST['old-password'], $_POST['new-password-1'], $_POST['new-password-2'])) {
+  $isPasswordUpdated = false;
+  $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 
+  // check if old password matches the one in the db
+  if (isValidUsernameAndPassword($djInfo['username'], $_POST['old-password'])) {
+    $result = updatePassword($_SESSION['id'], $_POST['new-password-1']);
 
-
+    if ($result->rowCount() == 1)
+      $isPasswordUpdated = true;
+  }
+}
 
 $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -37,15 +47,22 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
     // display alert saying we updated their username
     if (isset($isUsernameUpdated) && $isUsernameUpdated) 
       echo getAlert('Username updated.');
+
+    else if (isset($isPasswordUpdated)) {
+      if ($isPasswordUpdated)
+        echo getAlert('Password updated.');
+      else 
+        echo getAlert('Error. Password was not updated.');
+    }
+
     ?>
       
       <!-- update username form -->
-      <div class="card mt-4">
+      <div class="card mt-5">
         <div class="card-header">
           <h5>Update username</h5>
         </div>
         <div class="card-body">
-
           <form id="form-change-username" class="needs-validation" method="post" novalidate>
             <!-- current username -->
             <div class="form-group">
@@ -65,13 +82,62 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class='bx bx-user'></i></span>
                 </div>
-                <input type="text" class="form-control red-input" id="new-username" name="new-username" required>
+                <input type="text" class="form-control" id="new-username" name="new-username" required>
                 <div class="invalid-feedback invalid-feedback-username">
                   Username is already taken.
                 </div>
               </div>
             </div>
-            <input type="submit" value="Save" class="btn btn-primary float-right">
+            <input type="submit" value="Save username" class="btn btn-primary float-right" disabled>
+          </form>
+        </div>
+      </div>
+
+      <!-- change password form -->
+      <div class="card mt-5 mb-5">
+        <div class="card-header">
+          <h5>Update password</h5>
+        </div>
+        <div class="card-body">
+          <form id="form-update-password" class="needs-validation" method="post">
+
+            <!-- old password -->
+            <div class="form-group">
+              <label for="old-password">Old password:</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+                </div>
+                <input type="password" class="form-control" id="old-password" name="old-password" required>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <!-- new password 1 -->
+            <div class="form-group">
+              <label for="new-password-1">New password:</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+                </div>
+                <input type="password" class="form-control" id="new-password-1" name="new-password-1" required>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <!-- new password 2 -->
+            <div class="form-group">
+              <label for="new-password-2">Confirm new password:</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class='bx bx-lock-alt'></i></span>
+                </div>
+                <input type="password" class="form-control" id="new-password-2" name="new-password-2" required>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <input type="submit" value="Update password" class="btn btn-primary float-right" disabled>
           </form>
         </div>
       </div>
