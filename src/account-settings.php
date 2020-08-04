@@ -52,13 +52,13 @@ $djInfo = getDjInfo($_SESSION['id'])->fetch(PDO::FETCH_ASSOC);
       if ($isPasswordUpdated)
         echo getAlert('Password updated.');
       else 
-        echo getAlert('Error. Password was not updated.');
+        echo getAlert('Error. Password was not updated.', 'danger');
     }
 
     ?>
       
       <!-- update username form -->
-      <div class="card mt-5">
+      <div class="card mt-4">
         <div class="card-header">
           <h5>Update username</h5>
         </div>
