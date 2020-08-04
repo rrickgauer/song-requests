@@ -44,7 +44,7 @@ $setlist = getSetlistData($_GET['id'])->fetch(PDO::FETCH_ASSOC);
 
     <?php  
     if (isset($setlistInfoUpdated) && $setlistInfoUpdated == true)
-      echo getAlert('Info ipdated');
+      echo getAlert('Info updated');
     ?>
 
     
