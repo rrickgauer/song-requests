@@ -95,5 +95,18 @@ else if (isset($_POST['function'], $_POST['requestID']) && $_POST['function'] ==
 }
 
 
+// request to check if username exists in the system
+else if (isset($_GET['function'], $_GET['username']) && $_GET['function'] == 'does-username-exist') {
+  $result = isUsernameRegistered($_GET['username']);
+
+  if ($result == true)
+    echo 'failure';
+  else
+    echo 'success';
+
+  exit;
+}
+
+
 
 ?>

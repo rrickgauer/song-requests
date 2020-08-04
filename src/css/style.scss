@@ -120,7 +120,8 @@ section#navbar {
 button {
   &:active,
   &:focus,
-  &:hover {
+  &:hover,
+  &:disabled {
     opacity: 0.8;
     box-shadow: none !important;
     outline: none !important;
@@ -133,6 +134,7 @@ button {
   &:active,
   &:hover,
   &:visited,
+  &:disabled,
   &:not(:disabled):not(.disabled):active {
     background-color: $color-pink;
     border-color: $color-pink;

@@ -37,7 +37,15 @@ if (isset($_POST['new-setlist-name'], $_POST['new-setlist-time-start'], $_POST['
 <body>
   <?php include('navbar.php'); ?>
   <div class="container">
-    <h1 class="mt-3 mb-5"><?php echo $djInfo['username']; ?></h1>
+  
+    <div class="split mt-3 mb-5">
+      <div class="left">
+        <h1><?php echo $djInfo['username']; ?></h1>
+      </div>
+      <div class="right">
+        <a href="account-settings.php">Settings</a>
+      </div>
+    </div>
 
     <div class="row">
       

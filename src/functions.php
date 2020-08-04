@@ -536,6 +536,52 @@ function deleteRequest($requestID) {
   return $sql;
 }
 
+// see if a username is registered in the system
+function isUsernameRegistered($username) {
+
+  $stmt = '
+  SELECT COUNT(id) AS count
+  FROM   Djs
+  WHERE  username = :username
+  LIMIT  1';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind username
+  $username = filter_var($username, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':username', $username, PDO::PARAM_STR);
+
+  $sql->execute();
+
+  $result = $sql->fetch(PDO::FETCH_ASSOC);
+
+  if ($result['count'] != 0)
+    return true;
+  else
+    return false;
+}
+
+// update a dj's username
+function updateUsername($id, $username) {
+  $stmt = '
+  UPDATE Djs
+  SET    username = :username
+  WHERE  id = :id';
+
+  $sql = dbConnect()->prepare($stmt);
+
+  // filter and bind username
+  $username = filter_var($username, FILTER_SANITIZE_STRING);
+  $sql->bindParam(':username', $username, PDO::PARAM_STR);
+
+
+  // filter and bind dj id
+  $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+  $sql->bindParam(':id', $id, PDO::PARAM_INT);
+
+  $sql->execute();
+  return $sql;
+}
 
 
 ?>
