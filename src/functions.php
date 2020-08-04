@@ -246,8 +246,40 @@ function getSetlistData($id) {
 }
 
 // return all setlists owned by a dj
+
+/**
+ * Retuns all setlists owned by a dj
+ * 
+ * id
+ * dj_id
+ * name
+ * status
+ * time_start
+ * time_start_display_date
+ * time_start_display_time
+ * time_end_display_date
+ * time_end_display_time
+ * count_requests
+ */
 function getDjSetlists($djId) {
   // create sql query
+  // $stmt = '
+  // SELECT Setlists.id,
+  //        Setlists.dj_id,
+  //        Setlists.name,
+  //        Setlists.status,
+  //        Setlists.time_start,
+  //        Setlists.time_end,
+  //        DATE_FORMAT(Setlists.time_start, "%c/%d/%Y") AS time_start_display_date,
+  //        DATE_FORMAT(Setlists.time_start, "%l:%i %p") AS time_start_display_time,
+  //        DATE_FORMAT(Setlists.time_end, "%c/%d/%Y")   AS time_end_display_date,
+  //        DATE_FORMAT(Setlists.time_end, "%l:%i %p")   AS time_end_display_time,
+  //        (select count(Requests.id) from Requests where setlist_id = Setlists.id) as count_requests
+  // FROM   Setlists
+  // WHERE  Setlists.dj_id = :djId
+  // GROUP  BY Setlists.id
+  // ORDER  BY Setlists.time_start DESC';
+
   $stmt = '
   SELECT Setlists.id,
          Setlists.dj_id,
@@ -258,7 +290,10 @@ function getDjSetlists($djId) {
          DATE_FORMAT(Setlists.time_start, "%c/%d/%Y") AS time_start_display_date,
          DATE_FORMAT(Setlists.time_start, "%l:%i %p") AS time_start_display_time,
          DATE_FORMAT(Setlists.time_end, "%c/%d/%Y")   AS time_end_display_date,
-         DATE_FORMAT(Setlists.time_end, "%l:%i %p")   AS time_end_display_time
+         DATE_FORMAT(Setlists.time_end, "%l:%i %p")   AS time_end_display_time,
+         (SELECT COUNT(Requests.id)
+          FROM   Requests
+          WHERE  setlist_id = Setlists.id)            AS count_requests
   FROM   Setlists
   WHERE  Setlists.dj_id = :djId
   GROUP  BY Setlists.id

@@ -63,6 +63,8 @@ function getSetlistCardHtml(setlist) {
   html += setlist.time_end_display_date + ' at ';
   html += setlist.time_end_display_time + '</p>';
 
+  html += '<p class="card-text">Requests: ' + setlist.count_requests + '</p>'; 
+
   html += '</div>';
   html += '<div class="card-footer">';
 
