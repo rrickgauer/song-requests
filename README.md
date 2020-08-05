@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo-readme.png">
+</p>
+
 # song-requests
 Submit song requests to the DJ.
 
