@@ -1,9 +1,10 @@
 <p align="center">
-  <img src="logo-readme.png">
+  <img src="logo-readme-2.png">
 </p>
 
-# song-requests
+<p align="center">
 Submit song requests to the DJ.
+</p>
 
 ## Description
 
