@@ -5,4 +5,4 @@
 *.sql linguist-detectable=true
 *.sql linguist-language=sql
 
-song-requests/sql/mock-data/* linguist-detectable=false
+sql/mock-data/* linguist-detectable=false
