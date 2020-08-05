@@ -2,4 +2,5 @@
 # *.php linguist-language=PHP
 # *.sql linguist-detectable=false
 
-.sql -linguist-detectable
+*.sql linguist-detectable=true
+*.sql linguist-language=sql
