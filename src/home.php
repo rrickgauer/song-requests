@@ -35,10 +35,10 @@
     <div id="home-search-results">
       
       <!-- dj search result cards go here -->
-      <div class="search-results-djs"></div>
+      <ul class="list-group list-group-flush search-results search-results-djs"></ul>
     
       <!-- setlists cards go here-->
-      <div class="search-results-setlists"></div>
+      <ul class="list-group list-group-flush search-results search-results-setlists"></ul>
 
       
     </div>

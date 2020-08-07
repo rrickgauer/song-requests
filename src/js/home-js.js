@@ -45,17 +45,13 @@ function displaySearchResults(data) {
 // generates and returns the html for the dj cards
 function getDjCardsHtml(djs) {
   const size = djs.length;
-  var html = '<h4 class="mb-3">DJ\'s</h4>';
+  var html = '<h5 class="mb-3">Djs</h5>';
 
   for (var count = 0; count < size; count++) {
-    html += '<div class="card card-dj">';
-    html += '<div class="card-body">';
-    html += '<h5 class="card-title">' + djs[count].username + '</h5>';
-    html += '</div>';
-    html += '<div class="card-footer">';
-    html += '<a class="float-right" href="dj.php?id=' + djs[count].id + '">View</a>';
-    html += '</div>';
-    html += '</div>';
+    var dj = djs[count];
+    html += '<li class="list-group-item item-dj"><div>' + dj.username;
+    html += '<span class="badge badge-light ml-2 mr-2">' + dj.count_setlists + ' setlists</span></div>';
+    html += '<a href="dj.php?id=' + dj.id + '">Profile</a></li>';
   }
 
   return html;
@@ -64,18 +60,17 @@ function getDjCardsHtml(djs) {
 // generates and returns html for all the setlist cards
 function getSetlistCardsHtml(setlists) {
   const size = setlists.length;
-  var html = '<h4 class="mb-3 mt-5">Setlists</h4>';
 
+  var html = '<h5 class="mb-3 mt-5">Setlists</h5>';
   for (var count = 0; count < size; count++) {
-    html += '<div class="card card-setlist">';
-    html += '<div class="card-body">';
-    html += '<h5 class="card-title">' + setlists[count].name + '</h5>';
+    var setlist = setlists[count];
+    html += '<li class="list-group-item item-setlist">';
+    html += '<div>' + setlist.name;
+    html += '<span class="badge badge-light ml-2 mr-2">' + setlist.count_requests + ' requests</span>';
     html += '</div>';
-    html += '<div class="card-footer">';
-    html += '<a class="float-right" href="setlist.php?id=' + setlists[count].id + '">View</a>';
-    html += '</div>';
-    html += '</div> ';
+    html += '<a href="setlist.php?id=' + setlist.id + '">View</a></li>';
   }
+
 
   return html;
 }

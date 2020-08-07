@@ -166,3 +166,18 @@ button:active, button:focus, button:hover, button:disabled {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.item-setlist,
+.item-dj {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-results {
+  margin-bottom: 20px;
+}
+
+
+
+
+

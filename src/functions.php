@@ -84,9 +84,6 @@ function getDjIdFromUsername($username) {
 
 // get dj info from id
 function getDjInfo($id) {
-  // $pdo = dbConnect();
-  // $sql = $pdo->prepare('SELECT Djs.id, Djs.username, (select count(Setlists.id) from Setlists where Setlists.dj_id = Djs.id) as count_setlists FROM Djs WHERE id=:id LIMIT 1');
-
   $stmt = '
   SELECT Djs.id,
          Djs.username,
@@ -322,7 +319,10 @@ function getDjsFromSearch($query) {
   // sql statement
   $stmt = '
   SELECT id,
-         username
+         username,
+         (SELECT COUNT(Setlists.id)
+          FROM   Setlists
+          WHERE  Setlists.dj_id = Djs.id) AS count_setlists
   FROM   Djs
   WHERE  username LIKE :username
   ORDER  BY username ASC
@@ -350,7 +350,8 @@ function getDjsFromSearch($query) {
  * status
  * time_start
  * time_end
- * username
+ * username (dj)
+ * count_requests: number of requests in the setlist
 *****************************************************/
 function getSetlistsFromSearch($query) {
   // sql statement
@@ -361,14 +362,17 @@ function getSetlistsFromSearch($query) {
          Setlists.status,
          Setlists.time_start,
          Setlists.time_end,
-         Djs.username
+         Djs.username,
+         (SELECT COUNT(Requests.id)
+          FROM   Requests
+          WHERE  Requests.setlist_id = Setlists.id) AS count_requests
   FROM   Setlists
          LEFT JOIN Djs
                 ON Setlists.dj_id = Djs.id
   WHERE  Setlists.name LIKE :name
   GROUP  BY Setlists.id
   ORDER  BY Setlists.name ASC
-  LIMIT  5';
+  LIMIT  5 ';
 
   $sql = dbConnect()->prepare($stmt);
 
