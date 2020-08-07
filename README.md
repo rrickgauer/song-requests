@@ -1,7 +1,7 @@
 <p align="center">
     <a href="https://ryanrickgauer.com/song-requests/home.php">
         <img src="img/logo-readme.png">
-    </a>
+    </a>    
 </p>
 
 <p align="center">
