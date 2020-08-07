@@ -2,6 +2,10 @@
   margin-top: 15px;
 }
 
+.card-setlist .card-text-dates {
+  color:  #808080;
+}
+
 .split {
   display: flex;
   align-items: center;
