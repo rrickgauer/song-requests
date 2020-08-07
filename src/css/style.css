@@ -177,8 +177,17 @@ button:active, button:focus, button:hover, button:disabled {
   justify-content: space-between;
 }
 
-.search-results {
-  margin-bottom: 20px;
+.card-search-results {
+  margin-top: 50px;
+}
+
+.card-search-results .card-header {
+  /*background-color: inherit;*/
+  border: none;
+}
+
+.card-search-results .card-body {
+  padding: 5px;
 }
 
 

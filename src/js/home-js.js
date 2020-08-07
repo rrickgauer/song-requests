@@ -38,14 +38,14 @@ function getSearchResults() {
 
 // load the result data
 function displaySearchResults(data) {
-  $(".search-results-setlists").html(getSetlistCardsHtml(data.setlists));
-  $(".search-results-djs").html(getDjCardsHtml(data.djs));
+  $(".search-results-setlists .list-group").html(getSetlistCardsHtml(data.setlists));
+  $(".search-results-djs .list-group").html(getDjCardsHtml(data.djs));
 }
 
 // generates and returns the html for the dj cards
 function getDjCardsHtml(djs) {
   const size = djs.length;
-  var html = '<h5 class="mb-3">Djs</h5>';
+  var html = '';
 
   for (var count = 0; count < size; count++) {
     var dj = djs[count];
@@ -60,8 +60,8 @@ function getDjCardsHtml(djs) {
 // generates and returns html for all the setlist cards
 function getSetlistCardsHtml(setlists) {
   const size = setlists.length;
+  var html = '';
 
-  var html = '<h5 class="mb-3 mt-5">Setlists</h5>';
   for (var count = 0; count < size; count++) {
     var setlist = setlists[count];
     html += '<li class="list-group-item item-setlist">';
@@ -70,7 +70,6 @@ function getSetlistCardsHtml(setlists) {
     html += '</div>';
     html += '<a href="setlist.php?id=' + setlist.id + '">View</a></li>';
   }
-
 
   return html;
 }
