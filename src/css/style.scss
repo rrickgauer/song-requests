@@ -218,4 +218,23 @@ button {
   font-family: $font;
 }
 
+.item-setlist,
+.item-dj {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-search-results {
+  margin-top: 50px;
+}
+
+.card-search-results .card-header {
+  /*background-color: inherit;*/
+  border: none;
+}
+
+.card-search-results .card-body {
+  padding: 5px;
+}
+
 

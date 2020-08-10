@@ -2,10 +2,6 @@
   margin-top: 15px;
 }
 
-.card-setlist .card-text-dates {
-  color:  #808080;
-}
-
 .split {
   display: flex;
   align-items: center;
@@ -169,8 +165,6 @@ button:active, button:focus, button:hover, button:disabled {
   font-family: "Rambla", sans-serif;
 }
 
-/*# sourceMappingURL=style.css.map */
-
 .item-setlist,
 .item-dj {
   display: flex;
@@ -190,7 +184,4 @@ button:active, button:focus, button:hover, button:disabled {
   padding: 5px;
 }
 
-
-
-
-
+/*# sourceMappingURL=style.css.map */
